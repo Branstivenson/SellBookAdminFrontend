@@ -1,0 +1,60 @@
+<form [formGroup]="formBook" (ngSubmit)="insertBook()">
+    <div class="new-seccion">
+        <div class="row">
+            <div class="column id me-2">
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">ISXN:</p>
+                    <input type="number" class="inp inp-cyan" formControlName="id" placeholder="ej: 9789588894003">
+                </div>
+            </div>
+            <div class="column">
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">Titulo:</p>
+                    <input type="text" class="inp inp-cyan" formControlName="titulo" placeholder="ej: Cien años de soledad">
+                </div>
+            </div>
+        </div>
+        <div class="inp-div">
+            <p class="txt-bold txt-cyan me-1">Autor:</p>
+            <input type="text" class="inp inp-cyan" formControlName="autor" placeholder="ej: Gabriel García Márquez">      
+        </div>
+        <div class="inp-div">
+            <p class="txt-bold txt-cyan me-1">Editorial:</p>
+            <input type="text" class="inp inp-cyan" formControlName="editorial" placeholder="ej: Penguin Random House">    
+        </div>
+        <div class="inp-div">
+            <p class="txt-bold txt-cyan me-1">Año de publicación:</p>
+            <input type="number" class="inp inp-cyan" formControlName="añoPublicacion" placeholder="ej: 2024">
+        </div>
+    
+        <div class="row">
+            <div class="column me-2">
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">Cantidad de unidades:</p>
+                    <input type="number" class="inp inp-cyan" formControlName="unidades" placeholder="ej: 8">
+                </div>
+            </div>
+            <div class="column">
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">Costo:</p>
+                    <input type="number" class="inp inp-cyan" formControlName="costo" placeholder="ej: 69000">     
+                </div>
+            </div>
+        </div>
+    
+        <div class="inp-div">
+            <p class="txt-bold txt-cyan me-1">Url de la imagen:</p>
+            <input type="text" class="inp inp-cyan" formControlName="image" placeholder="ej: https://portada-libro-imagen...">     
+        </div>
+        <div formGroupName="categoria" class="slt-div">
+            <p class="txt-bold txt-cyan txt-center me-1">Categoria:</p>
+            <select class="slt slt-cyan" formControlName="id">
+                <option value="0">¿A qué categoria pertenece el libro?</option>
+                <hr>
+                <option *ngFor="let category of categoryList" value={{category.id}}>{{category.nombre}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-cyan btn-content">Insertar</button>
+</form>
