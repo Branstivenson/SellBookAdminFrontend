@@ -14,5 +14,8 @@ export class BookService {
     console.log(formBook);
     return this.httpClient.post(`${this.baseUrl}/insertar`, formBook);
   }
+  findAll(){
+    return this.httpClient.get(`${this.baseUrl}/`)
+  }
 
 }

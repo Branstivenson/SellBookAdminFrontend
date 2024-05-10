@@ -177,8 +177,16 @@
     color: white;
 }
 
-
-
+/*coloresTable*/
+td{
+    color: #0A473F;
+}
+th{
+    color: #179D8D;
+}
+table>hr{
+    color: #179D8D;
+}
 
 
 .mt-1{
