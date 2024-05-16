@@ -15,17 +15,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let book of books">
             <th>1</th>
-            <td><img src="https://libreriadelau.vtexassets.com/arquivos/ids/34401077-800-auto?v=638494223294900000&width=800&height=auto&aspect=true" alt=""></td>
-            <td>9786287715103</td>
-            <td>Antiestrés</td>
-            <td>Dr. Carlos Jaramillo</td>
-            <td>Grupo Planeta</td>
-            <td>Desarrollo Personal</td>
-            <td>2024</td>
-            <td>6</td>
-            <td>59000 COP</td>
+            <td><img src={{book.image}} alt=""></td>
+            <td>{{book.id}}</td>
+            <td class="titulo">{{book.titulo}}</td>
+            <td>{{book.autor}}</td>
+            <td>{{book.editorial}}</td>
+            <td>{{book.categoria}}</td>
+            <td>{{book.anioPublicacion}}</td>
+            <td>{{book.unidades}}</td>
+            <td>{{book.costo}} COP</td>
+            <td><button class="btn btn-grey btn-content btn-icon" routerLink="edit-book/{{book.id}}"><img src="../../../assets/settings.svg" alt=""></button></td>
             </tr>
         </tbody>
     </table>

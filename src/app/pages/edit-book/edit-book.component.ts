@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Book } from 'src/app/models/book';
 import { Categoria } from 'src/app/models/categoria';
 import { BookService } from 'src/app/service/book.service';
 import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
-  selector: 'app-new-book',
-  templateUrl: './new-book.component.html',
-  styleUrls: ['./new-book.component.css']
+  selector: 'app-edit-book',
+  templateUrl: './edit-book.component.html',
+  styleUrls: ['./edit-book.component.css']
 })
-export class NewBookComponent implements OnInit{
+export class EditBookComponent implements OnInit{
+
+  categoryList:Categoria[]=[];
+  idIsDisable:boolean=false;
 
   constructor(private categoryService:CategoryService,
     private bookService:BookService,
     private formBuilder:FormBuilder){
   }
+
+
 
   public formBook: FormGroup=this.formBuilder.group({
     id:[,[Validators.required]],
@@ -26,27 +32,30 @@ export class NewBookComponent implements OnInit{
     costo:[, Validators.required],
     image:['', Validators.required],
     categoria:this.formBuilder.group({
-      id:[0,[Validators.required]]
+      id:[0,[Validators.required]],
+      nombre:['']
     })
   })
 
-  categoryList:Categoria[]=[];
-
   ngOnInit(): void {
+    this.findById(9786287715127);
     this.allCategories();
 
   }
 
-  insertBook(){
-    this.bookService.insert(this.formBook.value).subscribe(
-      (error)=>{
+  
+  findById(id:any){
+    this.bookService.findById(id).subscribe(
+      (data:any)=>{
+        this.formBook.setValue(data);
+      },(error)=>{
         console.log(error);
-      }
-    )
-    this.formBook.reset();
+      })
   }
 
-
+  updateBook(){
+    
+  }
 
   allCategories(){
     this.categoryService.All().subscribe(

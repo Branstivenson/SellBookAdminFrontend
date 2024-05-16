@@ -10,12 +10,15 @@ export class BookService {
 
   constructor(private httpClient:HttpClient) { }
 
+  findById(id:any){
+    return this.httpClient.get(`${this.baseUrl}/id/${id}`)
+  }
   insert(formBook:any){
     console.log(formBook);
     return this.httpClient.post(`${this.baseUrl}/insertar`, formBook);
   }
   findAll(){
-    return this.httpClient.get(`${this.baseUrl}/`)
+    return this.httpClient.get(`${this.baseUrl}/findAll`)
   }
 
 }

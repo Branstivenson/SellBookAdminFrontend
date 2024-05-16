@@ -7,13 +7,10 @@ import { InventaryComponent } from './pages/inventary/inventary.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'SellBookAdminFrontend';
 
-  constructor(private router:Router){}
+  constructor(){}
 
-  ngOnInit(): void {
-    this.router.navigate(['sellbookadmin']);
-  }
 
 }

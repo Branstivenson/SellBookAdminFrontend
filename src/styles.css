@@ -103,7 +103,9 @@
     vertical-align: middle
 }
 /*button*/
-
+.btn-icon{
+    max-width: 60px;
+}
 .btn{
     display: flex;
     align-items: center;
@@ -139,7 +141,10 @@
 }
 .inp-cyan:hover{
     box-shadow: inset 0 0 0 3px #14887a;
-}.slt-cyan{
+}.inp-cyan:disabled{
+    background-color: #e1ebea;
+}
+.slt-cyan{
     color: #179D8D;
     background-color: white;
     border: solid #179D8D 3px;
@@ -151,6 +156,12 @@
     border: #179D8D;
 }.btn-cyan:hover:enabled{
     background-color: #14887a;
+}.btn-grey{
+    color: #DCEEEC;
+    background-color: #dedad7;
+    border: #dedad7;
+}.btn-grey:hover:enabled{
+    background-color: #bebebe;
 }
 .btn-outline-cyan{
     color: #179D8D;
