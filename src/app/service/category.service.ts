@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class CategoryService {
 
-  baseUrl="http://localhost:8080/categoria"
+  baseUrl="http://localhost:8080/category"
 
   constructor(public httpClient:HttpClient) { }
 
-  All(){
-    return this.httpClient.get(`${this.baseUrl}/all`);
+  findAll(){
+    return this.httpClient.get(`${this.baseUrl}/findAll`);
   }
 
 }

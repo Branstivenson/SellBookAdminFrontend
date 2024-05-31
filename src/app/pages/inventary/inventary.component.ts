@@ -20,10 +20,7 @@ export class InventaryComponent implements OnInit{
   findAll(){
     this.bookService.findAll().subscribe(
       (data:any)=>{
-        this.books = data.map((book: any) => {
-          book.categoria = book.categoria.nombre;
-          return book;
-        })
+        this.books = data;
       },(error)=>{
         console.log(error);
       }

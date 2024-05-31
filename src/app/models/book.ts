@@ -1,15 +1,15 @@
-import { Categoria } from "./categoria";
+import { Category } from "./category";
 
 export class Book{
-    id:number=0;
+    isxn:number=0;
     image:String='';
-    titulo:String='';
-    autor:String='';
+    title:String='';
+    author:String='';
     editorial:String='';
-    categoria:String='';
-    anioPublicacion:number=0;
-    unidades:number=0;
-    costo:number=0;
+    category!:Category;
+    publicationDate:number=0;
+    units:number=0;
+    cost:number=0;
     
 
 }

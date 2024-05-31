@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/models/book';
-import { Categoria } from 'src/app/models/categoria';
+import { Category } from 'src/app/models/category';
 import { BookService } from 'src/app/service/book.service';
 import { CategoryService } from 'src/app/service/category.service';
 
@@ -12,7 +12,7 @@ import { CategoryService } from 'src/app/service/category.service';
 })
 export class EditBookComponent implements OnInit{
 
-  categoryList:Categoria[]=[];
+  categoryList:Category[]=[];
   idIsDisable:boolean=false;
 
   constructor(private categoryService:CategoryService,
@@ -23,29 +23,29 @@ export class EditBookComponent implements OnInit{
 
 
   public formBook: FormGroup=this.formBuilder.group({
-    id:[,[Validators.required]],
-    titulo:['',Validators.required],
-    autor:['',Validators.required],
+    isxn:[,[Validators.required]],
+    title:['',Validators.required],
+    author:['',Validators.required],
     editorial:['', Validators.required],
-    anioPublicacion:[, Validators.required],
-    unidades:[, Validators.required],
-    costo:[, Validators.required],
+    publicationDate:[, Validators.required],
+    units:[, Validators.required],
+    cost:[, Validators.required],
     image:['', Validators.required],
-    categoria:this.formBuilder.group({
+    category:this.formBuilder.group({
       id:[0,[Validators.required]],
-      nombre:['']
+      name:['']
     })
   })
 
   ngOnInit(): void {
-    this.findById(9786287715127);
-    this.allCategories();
+    this.findByIsxnBook(2323);
+    this.findAllCategories();
 
   }
 
   
-  findById(id:any){
-    this.bookService.findById(id).subscribe(
+  findByIsxnBook(isxn:any){
+    this.bookService.findById(isxn).subscribe(
       (data:any)=>{
         this.formBook.setValue(data);
       },(error)=>{
@@ -57,8 +57,8 @@ export class EditBookComponent implements OnInit{
     
   }
 
-  allCategories(){
-    this.categoryService.All().subscribe(
+  findAllCategories(){
+    this.categoryService.findAll().subscribe(
       (data:any)=>{
         this.categoryList=data;
       },(error)=>{

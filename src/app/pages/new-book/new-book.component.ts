@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Categoria } from 'src/app/models/categoria';
+import { Category } from 'src/app/models/category';
 import { BookService } from 'src/app/service/book.service';
 import { CategoryService } from 'src/app/service/category.service';
 
@@ -30,7 +30,7 @@ export class NewBookComponent implements OnInit{
     })
   })
 
-  categoryList:Categoria[]=[];
+  categoryList:Category[]=[];
 
   ngOnInit(): void {
     this.allCategories();
@@ -49,7 +49,7 @@ export class NewBookComponent implements OnInit{
 
 
   allCategories(){
-    this.categoryService.All().subscribe(
+    this.categoryService.findAll().subscribe(
       (data:any)=>{
         this.categoryList=data;
       },(error)=>{

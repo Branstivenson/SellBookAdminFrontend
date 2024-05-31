@@ -18,15 +18,15 @@
             <tr *ngFor="let book of books">
             <th>1</th>
             <td><img src={{book.image}} alt=""></td>
-            <td>{{book.id}}</td>
-            <td class="titulo">{{book.titulo}}</td>
-            <td>{{book.autor}}</td>
+            <td>{{book.isxn}}</td>
+            <td class="title">{{book.title}}</td>
+            <td>{{book.author}}</td>
             <td>{{book.editorial}}</td>
-            <td>{{book.categoria}}</td>
-            <td>{{book.anioPublicacion}}</td>
-            <td>{{book.unidades}}</td>
-            <td>{{book.costo}} COP</td>
-            <td><button class="btn btn-grey btn-content btn-icon" routerLink="edit-book/{{book.id}}"><img src="../../../assets/settings.svg" alt=""></button></td>
+            <td>{{book.category.name}}</td>
+            <td>{{book.publicationDate}}</td>
+            <td>{{book.units}}</td>
+            <td>{{book.cost}} COP</td>
+            <td><button class="btn btn-grey btn-content btn-icon" routerLink="edit-book/{{book.isxn}}"><img src="../../../assets/settings.svg" alt=""></button></td>
             </tr>
         </tbody>
     </table>

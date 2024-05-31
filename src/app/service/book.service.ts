@@ -6,16 +6,16 @@ import { Injectable } from '@angular/core';
 })
 export class BookService {
 
-  baseUrl='http://localhost:8080/sellbook/libro';
+  baseUrl='http://localhost:8080/sellbook/book';
 
   constructor(private httpClient:HttpClient) { }
 
-  findById(id:any){
-    return this.httpClient.get(`${this.baseUrl}/id/${id}`)
+  findById(isxn:any){
+    return this.httpClient.get(`${this.baseUrl}/${isxn}`)
   }
   insert(formBook:any){
     console.log(formBook);
-    return this.httpClient.post(`${this.baseUrl}/insertar`, formBook);
+    return this.httpClient.post(`${this.baseUrl}/insert`, formBook);
   }
   findAll(){
     return this.httpClient.get(`${this.baseUrl}/findAll`)
