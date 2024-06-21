@@ -8,7 +8,7 @@ import { EditBookComponent } from './pages/edit-book/edit-book.component';
 const routes: Routes = [
   {
     component:InventaryComponent,
-    path:'books',
+    path:'inventary',
     pathMatch:'full'
   },{
     component:NewBookComponent,
@@ -16,7 +16,7 @@ const routes: Routes = [
     pathMatch:'full'
   },{
     component:EditBookComponent,
-    path:'books/edit-book/:id'
+    path:'inventary/:isxn'
   }
 ];
 

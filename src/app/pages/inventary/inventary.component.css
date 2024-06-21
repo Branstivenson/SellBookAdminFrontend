@@ -7,4 +7,13 @@ table img{
     text-align: center;
 }.title{
     max-width: 120px;
+}.search-bar>input{
+    display: flex;
+    flex: auto;
+}.load{
+    width: 100px;
+    height: 100px;
+}.empty-icon{
+    width: 100px;
+    height: 100px;
 }

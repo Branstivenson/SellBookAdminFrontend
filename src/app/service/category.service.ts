@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class CategoryService {
 
-  baseUrl="http://localhost:8080/category"
+  baseUrl="http://localhost:8080/sellbook/category"
 
   constructor(public httpClient:HttpClient) { }
 

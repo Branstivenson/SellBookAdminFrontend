@@ -17,6 +17,10 @@
     display: flex;
 }.txt-small{
     font-size: small;
+}.container{
+    margin-top: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
 /*---searchBar---*/
@@ -39,11 +43,22 @@
 }
 
 /*---elementos---*/
+/*dialog*/
+
 /*text*/
 .txt-bold{
     font-weight: bold;
+}.txt-tab{
+    margin-left: 1.24cm;
 }
 /*load*/
+.load{
+    transform-origin: center;
+    animation: rotateImage 2s linear infinite;
+    width: 30px;
+    height: 30px;
+}
+/*img*/
 .load{
     transform-origin: center;
     animation: rotateImage 2s linear infinite;
@@ -125,6 +140,80 @@
     width: 20px;
     height: 20px;
 }
+
+
+/*coloresConsole*/
+.console-ERROR{
+    border: #bd5153 solid 3px;
+    border-radius: 30px;
+    background-color: #f3cacb;
+}.console-body{
+    margin: 15px;
+}.console-items{
+    display: flex;
+    align-items: center;
+}.console-items img{
+    width: 30px;
+    height: 30px;
+}.info-ERROR{
+    border: #BD5153 solid 3px;
+    background-color: #BD5153;
+    border-radius: 30px;
+}.text-ERROR{
+    color: #BD5153;
+    margin-left: 10px;
+    margin-right: 10px;
+}.close-ERROR{
+    border: #BD5153 solid 3px;
+    background-color: #BD5153;
+    border-radius: 10px;
+}.close-ERROR:hover{
+    background-color: #964042;
+    border: #964042 solid 3px;
+}
+
+.console-OK{
+    border: #67bd51 solid 3px;
+    border-radius: 30px;
+    background-color: #d7f3ca;
+}.info-OK{
+    border: #67bd51 solid 3px;
+    background-color: #67bd51;
+    border-radius: 30px;
+}.text-OK{
+    color: #67bd51;
+    margin-left: 10px;
+    margin-right: 10px;
+}.close-OK{
+    border: #67bd51 solid 3px;
+    background-color: #67bd51;
+    border-radius: 10px;
+}.close-OK:hover{
+    background-color: #559c44;
+    border: #559c44 solid 3px;
+}
+
+.console-INFO{
+    border: #51bdbd solid 3px;
+    border-radius: 30px;
+    background-color: #caf3f0;
+}.info-INFO{
+    border: #51bdbd solid 3px;
+    background-color: #51bdbd;
+    border-radius: 30px;
+}.text-INFO{
+    color: #51bdbd;
+    margin-left: 10px;
+    margin-right: 10px;
+}.close-INFO{
+    border: #51bdbd solid 3px;
+    background-color: #51bdbd;
+    border-radius: 10px;
+}.close-INFO:hover{
+    background-color: #47a7a7;
+    border: #47a7a7 solid 3px;
+}
+
 /*coloresAlert*/
 .alert-red{
     background-color: #F3CACB;
@@ -157,7 +246,7 @@
 }.btn-cyan:hover:enabled{
     background-color: #14887a;
 }.btn-grey{
-    color: #DCEEEC;
+    color: black;
     background-color: #dedad7;
     border: #dedad7;
 }.btn-grey:hover:enabled{
