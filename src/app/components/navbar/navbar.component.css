@@ -1,0 +1,22 @@
+.nav>a:hover{
+    background-color: white;
+    border-radius: 15px;
+
+}.nav>a{
+    align-items: center;
+    height: 30px;
+}.nav{
+    border: solid 3px #179d8d;
+    border-radius: 18px;
+    background-color: #179d8d;
+}a{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}a:hover{
+    color: #179d8d;
+}.log{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}

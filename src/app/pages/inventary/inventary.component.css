@@ -1,0 +1,21 @@
+table img{
+    width: 60px;
+    border-radius: 15px;
+}table{
+    width: 100%;
+}tbody>tr>*{
+    text-align: center;
+}.title{
+    width: 20%;
+}.author{
+    width: 15%;
+}.search-bar>input{
+    display: flex;
+    flex: auto;
+}.load{
+    width: 100px;
+    height: 100px;
+}.empty-icon{
+    width: 100px;
+    height: 100px;
+}

@@ -1,0 +1,18 @@
+
+.id{
+    max-width: 35%;
+}.preview-image{
+    width: 16rem;
+    margin: 10px;
+    border-radius: 20px;
+}.body-preview-image{
+    border: #179d8d solid 3px;
+    border-radius: 30px;
+}.body-preview-image>.column>.btn{
+    margin-bottom: 10px;
+}.column-preview-image{
+    display: flex;
+    flex-direction: column;
+}
+
+

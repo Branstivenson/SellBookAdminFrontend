@@ -1,0 +1,71 @@
+<h2 class="txt-cyan txt-tab mb-3">INVENTARIO DE LIBROS</h2>
+<p class="txt-cyan">Asegurate de poner tildes para buscar, mayusculas no son necesarias.</p>
+<p class="txt-cyan txt-bold">Cantidad de libros encontrados: {{books.length}}</p>
+<form [formGroup]="searchForm" (submit)="search(searchForm.value.string)">
+    <div class="search-bar mb-1">
+        <input class="inp-cyan" type="text" formControlName="string" placeholder="Encuentra libros por titulo o autor">
+        <button type="submit" class="btn-cyan btn-content">
+            <img src="../../../assets/search.svg" alt="">
+        </button>
+    </div>
+</form>
+<div class="mb-3">
+    <div class="row" (click)="checkTituloAutor()">
+        <input type="radio" [checked]="checkedTituloAutor">
+        <p class="txt-cyan txt-bold ms-1">Titulo/Autor</p>
+    </div>
+    <div class="row" (click)="checkIsxn()">
+        <input type="radio"  [checked]="checkedIsxn">
+    <p class="txt-cyan txt-bold ms-1">ISXN</p>
+    </div>
+</div>
+<div class="empty" [hidden]="hiddenEmpty">
+    <div class="center">
+        <img class="empty-icon" src="../../../assets/library.svg" alt="">
+    </div>
+    <div class="center">
+        <h2 class="txt-cyan">No hay libros encontrados.</h2>
+    </div>
+</div>
+<div [hidden]="hiddenTable">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Isxn</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Editorial</th>
+                <th>Categoria</th>
+                <th>Publicación</th>
+                <th>Unidades</th>
+                <th>Costo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books.slice(0,50); let i=index">
+                <th>{{i+1}}</th>
+                <td><img src={{book.image}} alt=""></td>
+                <td>{{book.isxn}}</td>
+                <td class="title">{{book.title}}</td>
+                <td class="author">{{book.author}}</td>
+                <td>{{book.editorial}}</td>
+                <td>{{book.category.name}}</td>
+                <td>{{book.publicationDate}}</td>
+                <td>{{book.units}}</td>
+                <td>{{book.cost}} COP</td>
+                <td><button class="btn btn-grey btn-content btn-icon" routerLink="/inventary/{{book.isxn}}"><img
+                            src="../../../assets/settings.svg" alt=""></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div [hidden]="hiddenLoad">
+    <div class="center">
+        <p class="txt-cyan txt-bold">Cargando...</p>
+    </div>
+    <div class="center">
+        <img src="../../../assets/load.svg" class="load mb-3 row" alt="" [hidden]="hiddenLoad">
+    </div>
+</div>

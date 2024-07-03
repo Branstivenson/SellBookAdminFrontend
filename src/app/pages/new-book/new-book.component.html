@@ -1,0 +1,83 @@
+<h2 class="txt-cyan txt-tab mb-3">GUARDAR UN NUEVO LIBRO</h2>
+<div class="row">
+    <div class="column">
+        <form [formGroup]="bookDto" (ngSubmit)="insertBook()">
+                <div class="row">
+                    <div class="column id me-2">
+                        <div class="inp-div">
+                            <p class="txt-bold txt-cyan me-1">*ISXN:</p>
+                            <input type="number" class="inp inp-cyan" formControlName="isxn">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="inp-div">
+                            <p class="txt-bold txt-cyan me-1">*Titulo:</p>
+                            <input type="text" class="inp inp-cyan" formControlName="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">*Autor:</p>
+                    <input type="text" class="inp inp-cyan" formControlName="author">      
+                </div>
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">*Editorial:</p>
+                    <input type="text" class="inp inp-cyan" formControlName="editorial">    
+                </div>
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">*Año de publicación:</p>
+                    <input type="number" class="inp inp-cyan" formControlName="publicationDate">
+                </div>
+                <div class="row">
+                    <div class="column me-2">
+                        <div class="inp-div">
+                            <p class="txt-bold txt-cyan me-1">*Cantidad de unidades:</p>
+                            <input type="number" class="inp inp-cyan" formControlName="units">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="inp-div">
+                            <p class="txt-bold txt-cyan me-1">*Costo:</p>
+                            <input type="number" class="inp inp-cyan" formControlName="cost">     
+                        </div>
+                    </div>
+                </div>
+                <div class="inp-div">
+                    <p class="txt-bold txt-cyan me-1">*Url de la imagen:</p>
+                    <input type="url" class="inp inp-cyan" formControlName="image" (change)="setPreviewImage()">     
+                </div>
+                <div formGroupName="category" class="slt-div">
+                    <p class="txt-bold txt-cyan txt-center me-1">*Categoria:</p>
+                    <select class="slt slt-cyan" formControlName="id">
+                        <option value="0">¿A qué categoria pertenece el libro?</option>
+                        <hr>
+                        <option *ngFor="let category of categoryList" value={{category.id}}>{{category.name}}</option>
+                    </select>
+                </div>
+            <div class="console-{{responseHttp.status}} mt-3" [hidden]="hiddenConsole">
+                <div class="row console-body">
+                    <div class="console-items">
+                        <img class="info-{{responseHttp.status}}" src="../../../assets/info.svg" alt="">
+                    </div>
+                    <div class="column">
+                        <p class="text-{{responseHttp.status}}">{{responseHttp.message}}</p>
+                    </div>
+                    <div class="console-items">
+                        <img class="close-{{responseHttp.status}}" (click)="hideConsole()" src="../../../assets/close.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="center mt-3">
+                <button type="submit" class="btn btn-cyan btn-content">Guardar Libro</button>
+            </div>
+        </form>
+    </div>
+    <div class="column-preview-image ms-5">
+        <div class="body-preview-image">
+            <div class="column">
+                <img class="preview-image" src={{previewImage}} alt="" (error)="defaultPreviewImage()">
+            </div>
+        </div>
+    </div>
+</div>
