@@ -55,7 +55,7 @@
                 <td>{{book.publicationDate}}</td>
                 <td>{{book.units}}</td>
                 <td>{{book.cost}} COP</td>
-                <td><button class="btn btn-grey btn-content btn-icon" routerLink="/inventary/{{book.isxn}}"><img
+                <td><button class="btn btn-grey btn-content btn-icon" (click)="getBook(book.isxn)"><img
                             src="../../../assets/settings.svg" alt=""></button></td>
             </tr>
         </tbody>

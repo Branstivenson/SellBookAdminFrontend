@@ -1,6 +1,6 @@
 
 .id{
-    max-width: 35%;
+    min-width: 300px;
 }.preview-image{
     width: 16rem;
     margin: 10px;
@@ -14,5 +14,26 @@
     display: flex;
     flex-direction: column;
 }
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+}.justify-center{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+}
+@media screen and (min-width: 464px) {
+    p{
+        text-wrap: nowrap;
+    }
+  }
 
-
+  p{
+    width: min-content;
+    text-wrap-style: balance;
+}.inp-div{
+    gap: 5px;
+}.slc-div{
+    gap: 5px;
+}

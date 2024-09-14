@@ -13,7 +13,7 @@ export class BookService {
   constructor(private httpClient:HttpClient) { }
 
   findById(id:number){
-    return this.httpClient.get(`${this.baseUrl}/${id}`)
+    return this.httpClient.get(`${this.baseUrl}/id/${id}`)
   }
   findAll(){
     return this.httpClient.get(`${this.baseUrl}/allBooks`)
@@ -29,7 +29,7 @@ export class BookService {
     return this.httpClient.post(`${this.baseUrl}/insert`, bookDto);
   }
 
-  update(bookDto:Book){
+  update(bookDto:any){
     return this.httpClient.put(`${this.baseUrl}/update`, bookDto)
   }
   delete(id:number){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/service/book.service';
 
@@ -17,7 +18,9 @@ export class InventaryComponent implements OnInit{
   checkedTituloAutor:boolean=true;
   checkedIsxn:boolean=false;
 
-  constructor(private bookService:BookService){}
+  constructor(private bookService:BookService,
+    private router:Router
+  ){}
 
   searchForm= new FormGroup({
     string: new FormControl('',[Validators.required])
@@ -111,5 +114,8 @@ export class InventaryComponent implements OnInit{
     else{
       this.findAll();
     }
+  }
+  getBook(id:number){
+    this.router.navigate(['/new-book'],{queryParams:{id:id}})
   }
 }
