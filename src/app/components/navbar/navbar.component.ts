@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { INavHeader } from './model/INavHeader';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'br-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
