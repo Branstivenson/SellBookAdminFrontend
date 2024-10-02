@@ -80,8 +80,8 @@
             </div>
         </div>
         <div class="row justify-center">
-                <button type="submit" class="btn btn-cyan btn-content">Guardar</button>
-                <button type="submit" (click)="delete(bookDto.value.isxn)" class="btn btn-red btn-content" *ngIf="id">Eliminar</button>
+            <br-button type="submit" severity="primary" label="Guardar"/>
+            <br-button type="button" severity="danger" label="Eliminar" (click)="delete(bookDto.value.isxn)" *ngIf="id"/>
         </div>
     
     
