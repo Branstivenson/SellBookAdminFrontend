@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { InventaryComponent } from './pages/inventary/inventary.component';
+import { INavHeader } from './components/navbar/model/INavHeader';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,9 @@ export class AppComponent{
 
   constructor(){}
 
+  headers:INavHeader[]=[
+    {name:'Inventario', url:'/inventary'},
+    {name:'Nuevo Libro', url:'/new-book'}
+  ]
 
 }
