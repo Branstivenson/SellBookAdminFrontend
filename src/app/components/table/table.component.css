@@ -1,0 +1,9 @@
+td>img{
+    width: 60px;
+    border-radius: 15px;
+}table{
+    width: 100%;
+}tbody>tr>*{
+    text-align: center;
+    
+}
