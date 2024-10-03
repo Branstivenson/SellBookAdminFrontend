@@ -80,10 +80,8 @@
             </div>
         </div>
         <div class="row justify-center">
-            <br-button type="submit" severity="primary" label="Guardar"/>
-            <br-button type="button" severity="danger" label="Eliminar" (click)="delete(bookDto.value.isxn)" *ngIf="id"/>
+            <button type="submit" brButton>Guardar</button>
+            <button type="button" brButton severity="danger" (click)="delete(bookDto.value.isxn)" *ngIf="id">Eliminar</button>
         </div>
-    
-    
     </form>
 </div>

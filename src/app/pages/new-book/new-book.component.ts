@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'src/app/models/category';
+import { ICategory } from 'src/app/models/category';
 import { ResponseHttp } from 'src/app/models/response-http';
 import { BookService } from 'src/app/service/book.service';
 import { CategoryService } from 'src/app/service/category.service';
@@ -18,7 +18,7 @@ export class NewBookComponent implements OnInit{
   previewImage!:any;
   responseHttp:ResponseHttp={status:"",message: ""}
   hiddenConsole:boolean=true;
-  categoryList:Category[]=[];
+  categoryList:ICategory[]=[];
 
 
   constructor(private categoryService:CategoryService,
