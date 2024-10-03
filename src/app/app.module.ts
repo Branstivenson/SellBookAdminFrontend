@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { NewBookComponent } from './pages/new-book/new-book.component';
 import { InventaryComponent } from './pages/inventary/inventary.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ButtonComponent } from './components/button/button.component';
+import { ButtonDirective } from './components/button/button.directive';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ButtonComponent } from './components/button/button.component';
     NewBookComponent,
     InventaryComponent,
     NavbarComponent,
-    ButtonComponent
+    ButtonDirective,
+    TableComponent
   ],
   imports: [
     BrowserModule,

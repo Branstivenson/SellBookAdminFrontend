@@ -1,15 +1,15 @@
-import { Category } from "./category";
+import { ICategory } from "./category";
 
-export class Book{
-    isxn:number=0;
-    title:String='';
-    publicationDate:number=0;
-    units:number=0;
-    editorial:String='';
-    cost:number=0;
-    author:String='';
-    image:String='';
-    category!:Category;
+export interface IBook{
+    isxn:number;
+    title:String;
+    publicationDate:number;
+    units:number;
+    editorial:String;
+    cost:number;
+    author:String;
+    image:String;
+    category:ICategory;
     
 
 }

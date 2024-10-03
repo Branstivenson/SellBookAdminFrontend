@@ -38,6 +38,11 @@
     min-height: 40px;
 }
 
+.br-button-icon>img{
+    height: 20px;
+    width: 20px;
+}
+
 /*---elementos---*/
 /*dialog*/
 
@@ -114,6 +119,9 @@
     vertical-align: middle
 }
 /*button*/
+
+
+
 .btn-icon{
     max-width: 60px;
 }
@@ -136,7 +144,6 @@
     width: 20px;
     height: 20px;
 }
-
 
 /*coloresConsole*/
 .console-ERROR{
@@ -235,19 +242,7 @@
     border: solid #179D8D 3px;
 }
 /*coloresButton*/
-.btn-cyan{
-    color: #DCEEEC;
-    background-color: #179D8D;
-    border: #179D8D;
-}.btn-cyan:hover:enabled{
-    background-color: #14887a;
-}.btn-grey{
-    color: black;
-    background-color: #dedad7;
-    border: #dedad7;
-}.btn-grey:hover:enabled{
-    background-color: #bebebe;
-}
+
 .btn-outline-cyan{
     color: #179D8D;
     background-color: #DCEEEC;
@@ -259,13 +254,7 @@
     color: #DCEEEC;
     background-color: #179D8D;
 }
-.btn-red{
-    color: #F3CACB;
-    background-color: #BD5153;
-    border: #BD5153;
-}.btn-red:hover:enabled{
-    background-color: #9c4446;
-}
+
 /*coloresTxt*/
 .txt-cyan{
     color: #0A473F;

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Book } from '../models/book';
 
 
 @Injectable({
@@ -19,10 +18,10 @@ export class BookService {
     return this.httpClient.get(`${this.baseUrl}/allBooks`)
   }
   findByAuthorYTitle(string:String){
-    return this.httpClient.get(`${this.baseUrl}/searchTitleAuthor/${string}`)
+    return this.httpClient.get(`${this.baseUrl}/findByTitleAndAuthorAsAdmin/${string}`)
   }
-  findByIsxn(isxn:String){
-    return this.httpClient.get(`${this.baseUrl}/searchIsxn/${isxn}`)
+  findAllByIsxn(isxn:String){
+    return this.httpClient.get(`${this.baseUrl}/findAllByIdAsAdmin/${isxn}`)
   }
   insert(bookDto:any){
     console.log(bookDto);
