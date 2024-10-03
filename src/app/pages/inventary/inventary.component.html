@@ -28,38 +28,12 @@
     </div>
 </div>
 <div [hidden]="hiddenTable">
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Isxn</th>
-                <th>Titulo</th>
-                <th>Autor</th>
-                <th>Editorial</th>
-                <th>Categoria</th>
-                <th>Publicación</th>
-                <th>Unidades</th>
-                <th>Costo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let book of books.slice(0,50); let i=index">
-                <th>{{i+1}}</th>
-                <td><img src={{book.image}} alt=""></td>
-                <td>{{book.isxn}}</td>
-                <td class="title">{{book.title}}</td>
-                <td class="author">{{book.author}}</td>
-                <td>{{book.editorial}}</td>
-                <td>{{book.category.name}}</td>
-                <td>{{book.publicationDate}}</td>
-                <td>{{book.units}}</td>
-                <td>{{book.cost}} COP</td>
-                <td><button class="btn btn-grey btn-content btn-icon" (click)="getBook(book.isxn)"><img
-                            src="../../../assets/settings.svg" alt=""></button></td>
-            </tr>
-        </tbody>
-    </table>
+    <br-table
+    [items]="books"
+    [action]="tableAction"
+    [headers]="tableHeaders"
+    
+    />
 </div>
 <div [hidden]="hiddenLoad">
     <div class="center">

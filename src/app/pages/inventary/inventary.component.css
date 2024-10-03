@@ -1,11 +1,4 @@
-table img{
-    width: 60px;
-    border-radius: 15px;
-}table{
-    width: 100%;
-}tbody>tr>*{
-    text-align: center;
-}.title{
+.title{
     width: 20%;
 }.author{
     width: 15%;
@@ -18,4 +11,14 @@ table img{
 }.empty-icon{
     width: 100px;
     height: 100px;
+}
+
+
+td>img{
+    width: 60px;
+    border-radius: 15px;
+}table{
+    width: 100%;
+}tbody>tr>*{
+    text-align: center;
 }
