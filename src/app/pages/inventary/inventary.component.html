@@ -3,8 +3,8 @@
 <p class="txt-cyan txt-bold">Cantidad de libros encontrados: {{books.length}}</p>
 <form [formGroup]="searchForm" (submit)="search(searchForm.value.string)">
     <div class="search-bar mb-1">
-        <input class="inp-cyan" type="text" formControlName="string" placeholder="Encuentra libros por titulo o autor">
-        <button type="submit" class="btn-cyan btn-content">
+        <input brInputSearchBar type="text" formControlName="string" placeholder="Encuentra libros por titulo o autor">
+        <button type="submit" brButtonSearchBar>
             <img src="../../../assets/search.svg" alt="">
         </button>
     </div>
@@ -37,9 +37,7 @@
 </div>
 <div [hidden]="hiddenLoad">
     <div class="center">
-        <p class="txt-cyan txt-bold">Cargando...</p>
-    </div>
-    <div class="center">
         <img src="../../../assets/load.svg" class="load mb-3 row" alt="" [hidden]="hiddenLoad">
     </div>
 </div>
+

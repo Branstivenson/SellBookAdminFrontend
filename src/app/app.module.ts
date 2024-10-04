@@ -10,6 +10,10 @@ import { InventaryComponent } from './pages/inventary/inventary.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ButtonDirective } from './components/button/button.directive';
 import { TableComponent } from './components/table/table.component';
+import { ButtonSearchBarDirective } from './components/search-bar/button-search-bar.directive';
+import { InputSearchBarDirective } from './components/search-bar/input-search-bar.directive';
+import { InputDirective } from './components/input/input.directive';
+import { DropdownDirective } from './components/dropdown/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { TableComponent } from './components/table/table.component';
     InventaryComponent,
     NavbarComponent,
     ButtonDirective,
-    TableComponent
+    TableComponent,
+    ButtonSearchBarDirective,
+    InputSearchBarDirective,
+    InputDirective,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,

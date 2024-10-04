@@ -81,11 +81,11 @@ export class ButtonDirective implements OnInit {
   }
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#DCEEEC');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
     this.renderer.setStyle(this.element.nativeElement, 'background-color', '#179D8D');
     this.renderer.setStyle(this.element.nativeElement, 'border', '#179D8D');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#DCEEEC');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
     this.renderer.setStyle(this.element.nativeElement, 'background-color', '#14887a');
     this.renderer.setStyle(this.element.nativeElement, 'border', '#179D8D');
   }
@@ -101,11 +101,11 @@ export class ButtonDirective implements OnInit {
   }
 
   private dangerColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#F3CACB');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
     this.renderer.setStyle(this.element.nativeElement, 'background-color', '#BD5153');
     this.renderer.setStyle(this.element.nativeElement, 'border', '#BD5153');
   }private dangerColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#F3CACB');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
     this.renderer.setStyle(this.element.nativeElement, 'background-color', '#9c4446');
     this.renderer.setStyle(this.element.nativeElement, 'border', '#BD5153');
   }

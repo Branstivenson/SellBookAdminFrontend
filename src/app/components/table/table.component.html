@@ -8,8 +8,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of items.slice(0,50); let i=index">
-            <th>{{i+1}}</th>
-            <td *ngFor="let header of headers">            
+            <th>
+                <span class="br-column-title">#</span>
+                {{i+1}}
+            </th>
+            <td *ngFor="let header of headers">
+                <span class="br-column-title">{{header}}</span>            
                 <ng-container *ngIf="header.toLowerCase() === 'imagen';else cost">
                 <img [src]="item[header]" alt="" /> <!-- Cambia el tamaño según sea necesario -->
             </ng-container>
@@ -22,7 +26,13 @@
                 {{item[header]|titlecase}}
             </ng-template>
             </td>
-            <td><button brButton type="button" brButton severity="secondary" (click)="getItem(item.Id||item.Isxn)"><img src="{{action.icon}}" alt=""></button></td>
+            <td>
+                <span class="br-column-title">Acciones</span>
+                <button brButton type="button" (click)="getItem(item.Id||item.Isxn)">
+                    <img src="{{action.icon}}" alt="">
+                </button>
+            </td>
+            <br>
         </tr>
     </tbody>
 </table>

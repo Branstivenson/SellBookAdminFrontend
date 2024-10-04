@@ -38,7 +38,7 @@ export class InventaryComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.findAll();
+    this.search(this.searchForm.value.string);
   }
 
   checkTituloAutor(){
@@ -49,14 +49,25 @@ export class InventaryComponent implements OnInit{
     this.checkedTituloAutor=false;
     this.checkedIsxn=true;
    }
-  setHiddenEmpty(){
+  finishLoad(){
     if(this.books.length>0){
       this.hiddenEmpty=true;
       this.hiddenTable=false;
+      this.hiddenLoad=true;
+
     }else{
       this.hiddenEmpty=false;
       this.hiddenTable=true;
+      this.hiddenLoad=true;
+
     }
+  }
+  startLoad(){
+      this.hiddenEmpty=true;
+      this.hiddenTable=true;
+      this.hiddenLoad=false;
+
+    
   }
   findAll(){
     this.bookService.findAll().subscribe(
@@ -66,64 +77,54 @@ export class InventaryComponent implements OnInit{
         }else{
           this.books=this.mapBooksForTable(bookList);
         }
-        this.setHiddenEmpty();
-
+        this.finishLoad();
       },(error)=>{
         console.log(error);
       }
     )
   }
 
-  search(string:any){
-    if(this.checkedTituloAutor==true){
-      this.findByAuthorYTitle(string);
-    }else if(this.checkedIsxn==true){
-      this.findByIsxn(string);
+  async search(string:any){
+    this.startLoad();
+    if(this.checkedTituloAutor==true&&this.searchForm.valid){
+      await this.findByAuthorYTitle(string);
+    }else if(this.checkedIsxn==true&&this.searchForm.valid){
+      await this.findByIsxn(string);
     }else{
-      null;
+      this.findAll();
     }
+    
   }
 
   findByIsxn(isxn:String){
-    if(this.searchForm.valid){
-      this.hiddenLoad=false;
-      this.hiddenTable=true;
       this.bookService.findAllByIsxn(isxn).subscribe(
         (bookList:any)=>{
           if(bookList==null){
             this.books=[];
           }else{
-            this.books=this.mapBooksForTable(bookList);;
+            this.books=this.mapBooksForTable(bookList);
           }
-          this.setHiddenEmpty();
+          this.finishLoad();
+
         }
       )
-      this.hiddenLoad=true;
-    }
-    else{
-      this.findAll();
-    }
+    
+
   }
   
   findByAuthorYTitle(string:String){
-    if(this.searchForm.valid){
-      this.hiddenLoad=false;
-      this.hiddenTable=true;
       this.bookService.findByAuthorYTitle(string).subscribe(
         (bookList:any)=>{
           if(bookList==null){
             this.books=[];
           }else{
-            this.books=this.mapBooksForTable(bookList);;
+            this.books=this.mapBooksForTable(bookList);
           }
-          this.setHiddenEmpty();
+          this.finishLoad();
         }
       )
-      this.hiddenLoad=true;
-    }
-    else{
-      this.findAll();
-    }
+    
+
   }
   getBook(id:number){
     this.router.navigate(['/new-book'],{queryParams:{id:id}})

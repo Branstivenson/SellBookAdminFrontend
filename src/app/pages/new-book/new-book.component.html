@@ -7,49 +7,49 @@
                         <div class="column">
                             <div class="inp-div">
                                 <p class="txt-bold txt-cyan ">*ISXN:</p>
-                                <input type="number" class="inp inp-cyan" formControlName="isxn">
+                                <input type="number" brInput formControlName="isxn" [disabled]="id!=null">
                             </div>
                         </div>
                         <div class="column">
                             <div class="inp-div">
                                 <p class="txt-bold txt-cyan ">*Titulo:</p>
-                                <input type="text" class="inp inp-cyan" formControlName="title">
+                                <input type="text" brInput formControlName="title">
                             </div>
                         </div>
                     </div>
                     <div class="inp-div">
                         <p class="txt-bold txt-cyan ">*Autor:</p>
-                        <input type="text" class="inp inp-cyan" formControlName="author">
+                        <input type="text" brInput formControlName="author">
                     </div>
                     <div class="inp-div">
                         <p class="txt-bold txt-cyan ">*Editorial:</p>
-                        <input type="text" class="inp inp-cyan" formControlName="editorial">
+                        <input type="text" brInput formControlName="editorial">
                     </div>
                     <div class="inp-div">
                         <p class="txt-bold txt-cyan ">*Año de publicación:</p>
-                        <input type="number" class="inp inp-cyan" formControlName="publicationDate">
+                        <input type="number" brInput formControlName="publicationDate">
                     </div>
                     <div class="row wrap">
                         <div class="column">
                             <div class="inp-div">
                                 <p class="txt-bold txt-cyan ">*Cantidad de unidades:</p>
-                                <input type="number" class="inp inp-cyan" formControlName="units">
+                                <input type="number" brInput formControlName="units">
                             </div>
                         </div>
                         <div class="column">
                             <div class="inp-div">
                                 <p class="txt-bold txt-cyan ">*Costo:</p>
-                                <input type="number" class="inp inp-cyan" formControlName="cost">
+                                <input type="number" brInput formControlName="cost">
                             </div>
                         </div>
                     </div>
                     <div class="inp-div">
                         <p class="txt-bold txt-cyan ">*Url de la imagen:</p>
-                        <input type="url" class="inp inp-cyan" formControlName="image" (change)="setPreviewImage()">
+                        <input type="url" brInput formControlName="image" (change)="setPreviewImage()">
                     </div>
                     <div formGroupName="category" class="slt-div">
                         <p class="txt-bold txt-cyan txt-center ">*Categoria:</p>
-                        <select class="slt slt-cyan" formControlName="id">
+                        <select brDropdown formControlName="id">
                             <option value="0">¿A qué categoria pertenece el libro?</option>
                             <hr>
                             <option *ngFor="let category of categoryList" value={{category.id}}>{{category.name}}</option>

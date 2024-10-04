@@ -23,13 +23,6 @@
 .search-bar{
     display: flex;
     flex-direction: row;
-}.search-bar>input{
-    border-radius: 20px 0px 0px 20px;
-    min-width: 40px;
-    min-height: 40px;
-    font-size: 15px;
-    padding: 0px 20px;
-    outline: none;
 }.search-bar>button{
     display: flex;
     align-items: center;
@@ -90,15 +83,7 @@
     flex-direction: row;
     align-items: center;
 }
-.inp{
-    flex: auto;
-    border-radius: 20px;
-    min-width: 40px;
-    min-height: 40px;
-    font-size: 15px;
-    padding: 0px 20px;
-    outline: none;
-}.inp-radio{
+.inp-radio{
     width: 20px;
     height: 20px;
 }
@@ -108,16 +93,7 @@
     flex-direction: row;
     align-items: center;
 }
-.slt{
-    flex: auto;
-    border-radius: 20px;
-    min-width: 40px;
-    min-height: 40px;
-    font-size: 15px;
-    padding: 6px 20px;
-    outline: none;
-    vertical-align: middle
-}
+
 /*button*/
 
 
@@ -225,22 +201,7 @@
     font-weight: bold;
 }
 /*---coloresInput---*/
-.inp-cyan{
-    color: #179D8D;
-    background-color: white;
-    box-shadow: inset 0 0 0 3px #179D8D;
-    border: none;
-}
-.inp-cyan:hover{
-    box-shadow: inset 0 0 0 3px #14887a;
-}.inp-cyan:disabled{
-    background-color: #e1ebea;
-}
-.slt-cyan{
-    color: #179D8D;
-    background-color: white;
-    border: solid #179D8D 3px;
-}
+
 /*coloresButton*/
 
 .btn-outline-cyan{
@@ -263,15 +224,8 @@
 }
 
 /*coloresTable*/
-td{
-    color: #0A473F;
-}
-th{
-    color: #179D8D;
-}
-table>hr{
-    color: #179D8D;
-}
+
+
 
 
 .mt-1{
