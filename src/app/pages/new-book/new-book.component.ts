@@ -16,7 +16,7 @@ export class NewBookComponent implements OnInit{
   id!:number;
   ifErrorPreviewImage:String='';
   previewImage!:any;
-  responseHttp:ResponseHttp={status:"",message: ""}
+  showInConsole:ResponseHttp={status:'',message: ''}
   hiddenConsole:boolean=true;
   categoryList:ICategory[]=[];
 
@@ -64,34 +64,37 @@ export class NewBookComponent implements OnInit{
     defaultPreviewImage(){
     this.previewImage="../../../assets/noimage.png";
   }
-  hideConsole(){
-    this.hiddenConsole=true;
-  }
-  showConsole(){
-    this.hiddenConsole=false;
+  setResponse(response:any){
+    if(response.status.match("OK")){
+      this.showInConsole.status='success';
+      this.showInConsole.message=response.message;
+      this.hiddenConsole=false;
+
+    }else if(response.status.match("ERROR")){
+      this.showInConsole.status='danger';
+      this.showInConsole.message=response.message;
+      this.hiddenConsole=false;
+
+    }
   }
 
   insertBook(){
     if(this.bookDto.valid&&this.bookDto.value.category?.id!='0'){
       this.bookService.insert(this.bookDto.value).subscribe(
         (data:any)=>{
-          this.responseHttp=data;
-          if(this.responseHttp.status.match("OK")){
-            this.bookDto.reset();
-            this.bookDto.patchValue({
-              category:{
-                id:'0'
-              }
-          })
+          this.setResponse(data);
+          this.bookDto.reset();
+          this.bookDto.patchValue({
+            category:{
+              id:'0'
+            }
+        })
             this.defaultPreviewImage();
-            this.showConsole();
           }
-        }
       )
     }else{
-      this.responseHttp.status="ERROR";
-      this.responseHttp.message="Asegurate de llenar todos los campos correctamente."
-      this.showConsole();
+      this.showInConsole={status:"danger", message:"Asegurate de llenar todos los campos correctamente."}
+      this.hiddenConsole=false
     }
 
   }
@@ -120,28 +123,25 @@ export class NewBookComponent implements OnInit{
   update(){
     if(this.bookDto.valid&&this.bookDto.value.category?.id!='0'){
       this.bookService.update(this.bookDto.value).subscribe(
-        (info:any)=>{
-          this.responseHttp=info;
-          this.showConsole();
+        (data:any)=>{
+          this.setResponse(data);
         },(error)=>{
-          this.responseHttp={status:"ERROR", message:error}
-          this.showConsole();
-
+          this.setResponse(error);
         }
        )
     }else{
-      this.responseHttp={status:"ERROR", message:"Asegurate de llenar todos los campos correctamente."}
-      this.showConsole();
+      this.showInConsole={status:"danger", message:"Asegurate de llenar todos los campos correctamente."}
+      this.hiddenConsole=false
     }
   }
   delete(isxnBook:any){
     this.bookService.delete(isxnBook).subscribe(
       (data:any)=>{
-        this.responseHttp=data;
-        this.showConsole();
-        if(this.responseHttp.status.match("OK")){
+        this.showInConsole=data;
+        this.hiddenConsole=false
+        if(this.showInConsole.status.match("OK")){
           
-          alert(this.responseHttp.message);
+          alert(this.showInConsole.message);
           this.router.navigate(['/inventary']);
 
         }

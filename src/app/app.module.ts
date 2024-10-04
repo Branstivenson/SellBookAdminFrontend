@@ -14,6 +14,7 @@ import { ButtonSearchBarDirective } from './components/search-bar/button-search-
 import { InputSearchBarDirective } from './components/search-bar/input-search-bar.directive';
 import { InputDirective } from './components/input/input.directive';
 import { DropdownDirective } from './components/dropdown/dropdown.directive';
+import { ConsoleComponent } from './components/console/console.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DropdownDirective } from './components/dropdown/dropdown.directive';
     InputSearchBarDirective,
     InputDirective,
     DropdownDirective,
+    ConsoleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
 export class ResponseHttp{
-    status!:String;
-    message!:String;
+    status!:string;
+    message!:string;
 }

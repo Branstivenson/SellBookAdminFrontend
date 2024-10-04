@@ -18,17 +18,24 @@
 }.txt-small{
     font-size: small;
 }
+.alert{
+    border-radius: 20px;
+    padding: 20px 40px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 800px;
+}.alert-red{
+    background-color: #F3CACB;
+}.alert-red>p{
+    color: #BD5153;
+    font-weight: bold;
+}
 
 /*---searchBar---*/
 .search-bar{
     display: flex;
     flex-direction: row;
-}.search-bar>button{
-    display: flex;
-    align-items: center;
-    border-radius: 0px 20px 20px 0px;
-    min-width: 40px;
-    min-height: 40px;
 }
 
 .br-button-icon>img{
@@ -69,14 +76,7 @@
       }
 }
 /*alert*/
-.alert{
-    border-radius: 20px;
-    padding: 20px 40px;
-    font-size: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    max-width: 800px;
-}
+
 /*input*/
 .inp-div{
     display: flex;
@@ -122,84 +122,9 @@
 }
 
 /*coloresConsole*/
-.console-ERROR{
-    border: #bd5153 solid 3px;
-    border-radius: 30px;
-    background-color: #f3cacb;
-}.console-body{
-    margin: 15px;
-}.console-items{
-    display: flex;
-    align-items: center;
-}.console-items img{
-    width: 30px;
-    height: 30px;
-}.info-ERROR{
-    border: #BD5153 solid 3px;
-    background-color: #BD5153;
-    border-radius: 30px;
-}.text-ERROR{
-    color: #BD5153;
-    margin-left: 10px;
-    margin-right: 10px;
-}.close-ERROR{
-    border: #BD5153 solid 3px;
-    background-color: #BD5153;
-    border-radius: 10px;
-}.close-ERROR:hover{
-    background-color: #964042;
-    border: #964042 solid 3px;
-}
-
-.console-OK{
-    border: #67bd51 solid 3px;
-    border-radius: 30px;
-    background-color: #d7f3ca;
-}.info-OK{
-    border: #67bd51 solid 3px;
-    background-color: #67bd51;
-    border-radius: 30px;
-}.text-OK{
-    color: #67bd51;
-    margin-left: 10px;
-    margin-right: 10px;
-}.close-OK{
-    border: #67bd51 solid 3px;
-    background-color: #67bd51;
-    border-radius: 10px;
-}.close-OK:hover{
-    background-color: #559c44;
-    border: #559c44 solid 3px;
-}
-
-.console-INFO{
-    border: #51bdbd solid 3px;
-    border-radius: 30px;
-    background-color: #caf3f0;
-}.info-INFO{
-    border: #51bdbd solid 3px;
-    background-color: #51bdbd;
-    border-radius: 30px;
-}.text-INFO{
-    color: #51bdbd;
-    margin-left: 10px;
-    margin-right: 10px;
-}.close-INFO{
-    border: #51bdbd solid 3px;
-    background-color: #51bdbd;
-    border-radius: 10px;
-}.close-INFO:hover{
-    background-color: #47a7a7;
-    border: #47a7a7 solid 3px;
-}
 
 /*coloresAlert*/
-.alert-red{
-    background-color: #F3CACB;
-}.alert-red>p{
-    color: #BD5153;
-    font-weight: bold;
-}
+
 /*---coloresInput---*/
 
 /*coloresButton*/

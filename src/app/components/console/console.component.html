@@ -1,0 +1,14 @@
+<div class="console-{{severity}}" [hidden]="hidden">
+    <div class="console-body">
+        <div class="console-items">
+            <img class="info-{{severity}}" src="../../../assets/info.svg" alt="">
+        </div>
+        <div class="console-column">
+            <p class="message-{{severity}}">{{message}}</p>
+        </div>
+        <div class="console-items">
+            <img class="close-{{severity}}" (click)="hideConsole()"
+                src="../../../assets/close.svg" alt="">
+        </div>
+    </div>
+</div>
