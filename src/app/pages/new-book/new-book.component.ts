@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
 import { ICategory } from 'src/app/models/category';
 import { ResponseHttp } from 'src/app/models/response-http';
-import { BookService } from 'src/app/service/book.service';
-import { CategoryService } from 'src/app/service/category.service';
+import { BookService } from 'src/app/services/book.service';
+import { CategoryService } from 'src/app/services/category.service';
+import { handleErrors } from '../helpers/handleerrors';
 
 @Component({
   selector: 'app-new-book',
@@ -24,11 +26,12 @@ export class NewBookComponent implements OnInit{
   constructor(private categoryService:CategoryService,
     private bookService:BookService,
     private activatedRoute:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private toastMessageService:ToastMessageService
   ){
   }
 
-   bookDto=new FormGroup({
+   formBook=new FormGroup({
     isxn: new FormControl('',[Validators.required]),
     title: new FormControl('',[Validators.required]),
     author: new FormControl('',[Validators.required]),
@@ -52,39 +55,26 @@ export class NewBookComponent implements OnInit{
 
     this.allCategories();
     if(this.id!=null){
-      this.findByIsxnBook(this.id);
+      this.findOneById();
     }else{
       this.defaultPreviewImage();
+      this.formBook.reset();
     }
   }
   setPreviewImage(){
-    this.previewImage=this.bookDto.value.image;
+    this.previewImage=this.formBook.value.image;
     this.ifErrorPreviewImage=this.previewImage;
   }
     defaultPreviewImage(){
     this.previewImage="../../../assets/noimage.png";
   }
-  setResponse(response:any){
-    if(response.status.match("OK")){
-      this.showInConsole.status='success';
-      this.showInConsole.message=response.message;
-      this.hiddenConsole=false;
-
-    }else if(response.status.match("ERROR")){
-      this.showInConsole.status='danger';
-      this.showInConsole.message=response.message;
-      this.hiddenConsole=false;
-
-    }
-  }
 
   insertBook(){
-    if(this.bookDto.valid&&this.bookDto.value.category?.id!='0'){
-      this.bookService.insert(this.bookDto.value).subscribe(
+    if(this.formBook.valid&&this.formBook.value.category?.id!='0'){
+      this.bookService.create(this.formBook.value).subscribe(
         (data:any)=>{
-          this.setResponse(data);
-          this.bookDto.reset();
-          this.bookDto.patchValue({
+          this.formBook.reset();
+          this.formBook.patchValue({
             category:{
               id:'0'
             }
@@ -110,23 +100,22 @@ export class NewBookComponent implements OnInit{
       }
     )
   }
-  findByIsxnBook(isxn:any){
-    this.bookService.findById(isxn).subscribe(
+  findOneById(){
+    this.bookService.findOneById(this.id).subscribe(
       (data:any)=>{
-        this.bookDto.setValue(data);
+        this.formBook.setValue(data.response);
+        this.formBook.get('isxn')?.disable();
         this.setPreviewImage();
       },(error)=>{
-        console.log(error);
+        handleErrors(error, this.toastMessageService)
       });
   }
 
   update(){
-    if(this.bookDto.valid&&this.bookDto.value.category?.id!='0'){
-      this.bookService.update(this.bookDto.value).subscribe(
+    if(this.formBook.valid&&this.formBook.value.category?.id!='0'){
+      this.bookService.update(this.formBook.value).subscribe(
         (data:any)=>{
-          this.setResponse(data);
         },(error)=>{
-          this.setResponse(error);
         }
        )
     }else{

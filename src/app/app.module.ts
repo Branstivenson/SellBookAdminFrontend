@@ -15,6 +15,7 @@ import { InputSearchBarDirective } from './components/search-bar/input-search-ba
 import { InputDirective } from './components/input/input.directive';
 import { DropdownDirective } from './components/dropdown/dropdown.directive';
 import { ConsoleComponent } from './components/console/console.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ConsoleComponent } from './components/console/console.component';
     InputDirective,
     DropdownDirective,
     ConsoleComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

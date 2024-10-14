@@ -1,6 +1,6 @@
 <h2 class="txt-cyan txt-tab mb-3">GUARDAR UN NUEVO LIBRO</h2>
 <div class="row justify-center">
-    <form [formGroup]="bookDto" class="column" style="width: 100%; gap: 20px;" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formBook" class="column" style="width: 100%; gap: 20px;" (ngSubmit)="onSubmit()">
         <div class="row wrap justify-center">
                 <div class="column" >
                     <div class="row wrap">
@@ -68,7 +68,8 @@
         <br-console [message]="showInConsole.message" [severity]="showInConsole.status" [hidden]="hiddenConsole"/>
         <div class="row justify-center">
             <button type="submit" brButton>Guardar</button>
-            <button type="button" brButton severity="danger" (click)="delete(bookDto.value.isxn)" *ngIf="id">Eliminar</button>
+            <button type="button" brButton severity="danger" (click)="delete(formBook.value.isxn)" *ngIf="id">Eliminar</button>
         </div>
+        {{id}}
     </form>
 </div>

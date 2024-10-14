@@ -18,7 +18,7 @@
 }.txt-small{
     font-size: small;
 }
-.alert{
+/* .alert{
     border-radius: 20px;
     padding: 20px 40px;
     font-size: 15px;
@@ -30,7 +30,7 @@
 }.alert-red>p{
     color: #BD5153;
     font-weight: bold;
-}
+} */
 
 /*---searchBar---*/
 .search-bar{

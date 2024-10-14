@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
 import { IAction } from 'src/app/components/table/model/action';
 import { IBook } from 'src/app/models/book';
-import { BookService } from 'src/app/service/book.service';
+import { BookService } from 'src/app/services/book.service';
+import { handleErrors } from '../helpers/handleerrors';
 
 @Component({
   selector: 'app-inventary',
@@ -28,8 +30,10 @@ export class InventaryComponent implements OnInit{
     'Imagen', 'Isxn', 'Titulo', 'Autor', 'Editorial', 'Categoria', 'Publicación', 'Unidades', 'Costo'
   ]
 
-  constructor(private bookService:BookService,
-    private router:Router
+  constructor(
+    private bookService:BookService,
+    private router:Router,
+    private toastMessageService:ToastMessageService
   ){}
 
   searchForm= new FormGroup({
@@ -71,15 +75,15 @@ export class InventaryComponent implements OnInit{
   }
   findAll(){
     this.bookService.findAll().subscribe(
-      (bookList:any)=>{
-        if(bookList==null){
+      (data:any)=>{
+        if(data.response==null){
           this.books=[];
         }else{
-          this.books=this.mapBooksForTable(bookList);
+          this.books=this.mapBooksForTable(data.response);
         }
         this.finishLoad();
       },(error)=>{
-        console.log(error);
+        handleErrors(error, this.toastMessageService)
       }
     )
   }
@@ -97,7 +101,7 @@ export class InventaryComponent implements OnInit{
   }
 
   findByIsxn(isxn:String){
-      this.bookService.findAllByIsxn(isxn).subscribe(
+      this.bookService.findById(isxn).subscribe(
         (bookList:any)=>{
           if(bookList==null){
             this.books=[];
