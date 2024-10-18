@@ -16,8 +16,7 @@ import { handleErrors } from '../helpers/handleerrors';
 export class NewBookComponent implements OnInit{
 
   id!:number;
-  ifErrorPreviewImage:String='';
-  previewImage!:any;
+  imagePreview:string="../../../assets/noimage.png";
   showInConsole:ResponseHttp={status:'',message: ''}
   hiddenConsole:boolean=true;
   categoryList:ICategory[]=[];
@@ -55,22 +54,11 @@ export class NewBookComponent implements OnInit{
 
     this.allCategories();
     if(this.id!=null){
-      this.findOneById();
-    }else{
-      this.defaultPreviewImage();
-      this.formBook.reset();
+      this.getBook();
     }
-  }
-  setPreviewImage(){
-    this.previewImage=this.formBook.value.image;
-    this.ifErrorPreviewImage=this.previewImage;
-  }
-    defaultPreviewImage(){
-    this.previewImage="../../../assets/noimage.png";
   }
 
   insertBook(){
-    if(this.formBook.valid&&this.formBook.value.category?.id!='0'){
       this.bookService.create(this.formBook.value).subscribe(
         (data:any)=>{
           this.formBook.reset();
@@ -78,18 +66,34 @@ export class NewBookComponent implements OnInit{
             category:{
               id:'0'
             }
-        })
-            this.defaultPreviewImage();
-          }
+          });
+          this.toastMessageService.showMessage(
+            'success',
+            data.response
+          );
+        },(error)=>{
+          handleErrors(error,this.toastMessageService);
+        }
       )
-    }else{
-      this.showInConsole={status:"danger", message:"Asegurate de llenar todos los campos correctamente."}
-      this.hiddenConsole=false
-    }
+    
 
   }
 
+  onChangeImage(){
+    if(this.formBook.value.image!=null){
+      this.imagePreview=String(this.formBook.value.image);
+    }else{
+      this.imagePreview="../../../assets/noimage.png";
 
+    }
+  }
+  onErrorImage(){
+    this.imagePreview="../../../assets/noimage.png";
+    this.toastMessageService.showMessage(
+      'danger',
+      'Imagen de la url invalida.'
+    )
+  }
 
   allCategories(){
     this.categoryService.findAll().subscribe(
@@ -100,47 +104,61 @@ export class NewBookComponent implements OnInit{
       }
     )
   }
-  findOneById(){
+  getBook(){
     this.bookService.findOneById(this.id).subscribe(
       (data:any)=>{
         this.formBook.setValue(data.response);
         this.formBook.get('isxn')?.disable();
-        this.setPreviewImage();
+        this.imagePreview=data.response.image;
       },(error)=>{
         handleErrors(error, this.toastMessageService)
       });
   }
 
   update(){
-    if(this.formBook.valid&&this.formBook.value.category?.id!='0'){
-      this.bookService.update(this.formBook.value).subscribe(
+      this.bookService.update(this.id,this.formBook.value).subscribe(
         (data:any)=>{
+          if(data.status=='NOT_MODIFIED'){
+            this.toastMessageService.showMessage(
+              'warning',
+              data.response
+            )
+          }else{
+            this.toastMessageService.showMessage(
+              'success',
+              data.response
+            )
+            this.router.navigateByUrl('/inventary');
+          }
         },(error)=>{
+          handleErrors(error, this.toastMessageService);
         }
        )
-    }else{
-      this.showInConsole={status:"danger", message:"Asegurate de llenar todos los campos correctamente."}
-      this.hiddenConsole=false
-    }
   }
   delete(isxnBook:any){
     this.bookService.delete(isxnBook).subscribe(
       (data:any)=>{
-        this.showInConsole=data;
-        this.hiddenConsole=false
-        if(this.showInConsole.status.match("OK")){
-          
-          alert(this.showInConsole.message);
-          this.router.navigate(['/inventary']);
-
-        }
+        this.toastMessageService.showMessage(
+          'success',
+          data.response
+        )
+        this.router.navigateByUrl('/inventary')
+      },(error)=>{
+        handleErrors(error, this.toastMessageService);
       }
+
     );
     
     
   }
 
   onSubmit(){
+    if(this.formBook.invalid&&this.formBook.value.category?.id=='0'){
+      return this.toastMessageService.showMessage(
+        'danger',
+        'Asegurate de llenar todos los campos correctamente'
+      )
+    }
     if(this.id!=null){
       this.update();
     }else{

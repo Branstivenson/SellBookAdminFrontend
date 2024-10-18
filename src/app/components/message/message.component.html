@@ -1,14 +1,14 @@
 <div class="console">
-    <div  *ngFor="let console of consoles" class="console-{{console.severity}}" [hidden]="console.hidden">
+    <div  *ngFor="let console of consoles" class="console-{{console.message.severity}}" [hidden]="console.hidden">
         <div class="console-body">
             <div class="console-items">
-                <img class="info-{{console.severity}}" src="../../../assets/info.svg" alt="">
+                <img class="info-{{console.message.severity}}" src="../../../assets/info.svg" alt="">
             </div>
             <div class="console-column">
-                <p class="message-{{console.severity}}">{{console.message}}</p>
+                <p class="message-{{console.message.severity}}">{{console.message.message}}</p>
             </div>
             <div class="console-items">
-                <img class="close-{{console.severity}}" (click)="hideConsole(console)"
+                <img class="close-{{console.message.severity}}" (click)="hideConsole(console)" [hidden]="!console.message.closeable"
                     src="../../../assets/close.svg" alt="">
             </div>
         </div>

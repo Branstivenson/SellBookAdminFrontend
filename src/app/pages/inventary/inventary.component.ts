@@ -14,6 +14,7 @@ import { handleErrors } from '../helpers/handleerrors';
 })
 export class InventaryComponent implements OnInit{
 
+  noImage:string="../../../assets/noimage.png";
   books:any[]=[];
   hiddenLoad:boolean=true;
   hiddenTable:boolean=false;

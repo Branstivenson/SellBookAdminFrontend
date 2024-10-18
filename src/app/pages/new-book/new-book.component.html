@@ -45,7 +45,7 @@
                     </div>
                     <div class="inp-div">
                         <p class="txt-bold txt-cyan ">*Url de la imagen:</p>
-                        <input type="url" brInput formControlName="image" (change)="setPreviewImage()">
+                        <input type="url" brInput formControlName="image" (change)="onChangeImage()">
                     </div>
                     <div formGroupName="category" class="slt-div">
                         <p class="txt-bold txt-cyan txt-center ">*Categoria:</p>
@@ -60,7 +60,7 @@
                 <div class="column-preview-image ">
                     <div class="body-preview-image">
                         <div class="column">
-                            <img class="preview-image" src={{previewImage}} alt="" (error)="defaultPreviewImage()">
+                            <img class="preview-image" src={{imagePreview}} (error)="onErrorImage()" alt="">
                         </div>
                     </div>
                 </div>
@@ -70,6 +70,5 @@
             <button type="submit" brButton>Guardar</button>
             <button type="button" brButton severity="danger" (click)="delete(formBook.value.isxn)" *ngIf="id">Eliminar</button>
         </div>
-        {{id}}
     </form>
 </div>

@@ -21,9 +21,10 @@ export class MessageComponent{
   }
 
   consoles:any[]=[]
+  
 
   hideConsole(console:any){
-    this.consoles.forEach((consol)=>consol==console,this.consoles.pop());
+    this.consoles.forEach((consol)=>{if(consol.id==console.id){this.consoles.pop()}});
     
   }
 }

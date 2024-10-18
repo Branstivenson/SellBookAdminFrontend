@@ -59,6 +59,26 @@
     border: #964042 solid 3px;
 }
 
+.console-warning{
+    border: #bdbd51 solid 3px;
+    border-radius: 30px;
+    background-color: #f0f3ca;
+}.info-warning{
+    border: #bdbd51 solid 3px;
+    background-color: #bdbd51;
+    border-radius: 30px;
+}.message-warning{
+    color: #bdbd51;
+    margin-left: 10px;
+    margin-right: 10px;
+}.close-warning{
+    border: #bdbd51 solid 3px;
+    background-color: #bdbd51;
+    border-radius: 10px;
+}.close-warning:hover{
+    background-color: #9b9c44;
+    border: #9b9c44 solid 3px;
+}
 .console-success{
     border: #67bd51 solid 3px;
     border-radius: 30px;
@@ -80,7 +100,6 @@
     border: #559c44 solid 3px;
 }
 
-
 .console{
     display: flex;
     flex-direction: column;
@@ -88,6 +107,6 @@
     position: fixed;
     top: 50px;
     right: 20px;
-    max-width: 300px;
+    max-width: 400px;
     width: 100%;
 }

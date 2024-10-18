@@ -10,7 +10,8 @@ export function handleErrors(error:any, toastMessageService:any){
     }else{
         toastMessageService.showMessage(
             'danger',
-            'Error en el servidor, intente mas tarde.'
+            'Error de conexión, por favor intente mas tarde.',
+            false
           )
     }
 }

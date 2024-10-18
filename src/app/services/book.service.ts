@@ -25,8 +25,8 @@ export class BookService {
   create(book:any){
     return this.httpClient.post(`${environment.url}/book`, book);
   }
-  update(book:any){
-    return this.httpClient.put(`${environment.url}/book`, book)
+  update(id:number, book:any){
+    return this.httpClient.patch(`${environment.url}/book/${id}`, book)
   }
   delete(id:number){
     return this.httpClient.delete(`${environment}/book/${id}`)

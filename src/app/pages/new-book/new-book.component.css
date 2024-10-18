@@ -2,7 +2,8 @@
 .id{
     min-width: 300px;
 }.preview-image{
-    width: 16rem;
+    width: 256px;
+    height: 395px;
     margin: 10px;
     border-radius: 20px;
 }.body-preview-image{

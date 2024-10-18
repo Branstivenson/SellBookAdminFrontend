@@ -15,7 +15,7 @@
             <td *ngFor="let header of headers">
                 <span class="br-column-title">{{header}}</span>            
                 <ng-container *ngIf="header.toLowerCase() === 'imagen';else cost">
-                <img [src]="item[header]" alt="" /> <!-- Cambia el tamaño según sea necesario -->
+                <img [src]="item[header]" alt="" (error)="item[header]=noImage"/> <!-- Cambia el tamaño según sea necesario -->
             </ng-container>
             <ng-template #cost >
                 <ng-container  *ngIf="header.toLowerCase() === 'costo';else textHeader">

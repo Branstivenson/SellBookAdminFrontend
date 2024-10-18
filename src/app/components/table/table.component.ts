@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class TableComponent {
 
+  noImage:string="../../../assets/noimage.png";
   @Input() items!:any[];
   @Input() headers!:any[];
   @Input() action!:IAction;
@@ -19,6 +20,10 @@ export class TableComponent {
 
   getItem(id:number){
     this.router.navigate([this.action.redirect],{queryParams:{id:id}})
+  }
+
+  errorImage(imagen:any){
+    return imagen=this.noImage;
   }
 
 
