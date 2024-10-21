@@ -16,6 +16,7 @@ export class InventaryComponent implements OnInit{
 
   noImage:string="../../../assets/noimage.png";
   books:any[]=[];
+  booksFound:any[]=[];
   hiddenLoad:boolean=true;
   hiddenTable:boolean=false;
   hiddenEmpty:boolean=true;
@@ -35,12 +36,14 @@ export class InventaryComponent implements OnInit{
     private bookService:BookService,
     private router:Router,
     private toastMessageService:ToastMessageService
-  ){}
+  ){
+  }
 
   searchForm= new FormGroup({
     string: new FormControl('',[Validators.required])
   })
 
+  
   ngOnInit(): void {
     
     this.search(this.searchForm.value.string);
@@ -49,13 +52,19 @@ export class InventaryComponent implements OnInit{
   checkTituloAutor(){
     this.checkedTituloAutor=true;
     this.checkedIsxn=false;
+    if(this.searchForm.value.string){
+      this.search(this.searchForm.value.string)
+    }
    }
    checkIsxn(){
     this.checkedTituloAutor=false;
     this.checkedIsxn=true;
+    if(this.searchForm.value.string){
+      this.search(this.searchForm.value.string)
+    }
    }
   finishLoad(){
-    if(this.books.length>0){
+    if(this.booksFound.length>0){
       this.hiddenEmpty=true;
       this.hiddenTable=false;
       this.hiddenLoad=true;
@@ -82,6 +91,7 @@ export class InventaryComponent implements OnInit{
         }else{
           this.books=this.mapBooksForTable(data.response);
         }
+        this.booksFound=this.books;
         this.finishLoad();
       },(error)=>{
         handleErrors(error, this.toastMessageService)
@@ -96,40 +106,29 @@ export class InventaryComponent implements OnInit{
     }else if(this.checkedIsxn==true&&this.searchForm.valid){
       await this.findByIsxn(string);
     }else{
-      this.findAll();
+      await this.findAll();
     }
-    
+    this.finishLoad();
   }
 
-  findByIsxn(isxn:String){
-      this.bookService.findById(isxn).subscribe(
-        (bookList:any)=>{
-          if(bookList==null){
-            this.books=[];
-          }else{
-            this.books=this.mapBooksForTable(bookList);
-          }
-          this.finishLoad();
-
-        }
-      )
-    
-
+  findByIsxn(isxn:string){
+    this.booksFound=[];
+    this.books.forEach((book:any)=>{
+      const bookTags:string=book.Isxn;
+      if(bookTags.includes(isxn)){
+        this.booksFound.push(book);
+      }
+    });
   }
   
-  findByAuthorYTitle(string:String){
-      this.bookService.findByAuthorYTitle(string).subscribe(
-        (bookList:any)=>{
-          if(bookList==null){
-            this.books=[];
-          }else{
-            this.books=this.mapBooksForTable(bookList);
-          }
-          this.finishLoad();
-        }
-      )
-    
-
+  findByAuthorYTitle(string:any){
+    this.booksFound=[];
+    this.books.forEach((book:any)=>{
+      const bookTags:string=book.Titulo+' '+book.Autor+' '+book.Editorial;
+      if(bookTags.toLowerCase().includes(string.toLowerCase())){
+        this.booksFound.push(book);
+      }
+    });
   }
   getBook(id:number){
     this.router.navigate(['/new-book'],{queryParams:{id:id}})
