@@ -65,8 +65,9 @@ export class NewBookComponent implements OnInit{
           this.formBook.patchValue({
             category:{
               id:'0'
-            }
+            },
           });
+          this.imagePreview="../../../assets/noimage.png"
           this.toastMessageService.showMessage(
             'success',
             data.response
