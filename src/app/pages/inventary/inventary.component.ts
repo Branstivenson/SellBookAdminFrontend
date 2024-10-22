@@ -45,8 +45,7 @@ export class InventaryComponent implements OnInit{
 
   
   ngOnInit(): void {
-    
-    this.search(this.searchForm.value.string);
+    this.findAll();
   }
 
   checkTituloAutor(){
@@ -84,6 +83,7 @@ export class InventaryComponent implements OnInit{
     
   }
   findAll(){
+    this.startLoad();
     this.bookService.findAll().subscribe(
       (data:any)=>{
         if(data.response==null){
@@ -106,9 +106,9 @@ export class InventaryComponent implements OnInit{
     }else if(this.checkedIsxn==true&&this.searchForm.valid){
       await this.findByIsxn(string);
     }else{
-      await this.findAll();
+      this.booksFound=this.books;
+      this.finishLoad();
     }
-    this.finishLoad();
   }
 
   findByIsxn(isxn:string){
@@ -119,6 +119,7 @@ export class InventaryComponent implements OnInit{
         this.booksFound.push(book);
       }
     });
+    this.finishLoad();
   }
   
   findByAuthorYTitle(string:any){
@@ -129,6 +130,7 @@ export class InventaryComponent implements OnInit{
         this.booksFound.push(book);
       }
     });
+    this.finishLoad();
   }
   getBook(id:number){
     this.router.navigate(['/new-book'],{queryParams:{id:id}})
