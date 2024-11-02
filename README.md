@@ -1,3 +1,6 @@
 <h1>SellBookAdminFrontend</h1>
-![alt text](image.png)# angular
-# angular
+<p>User interface para la administración e inventariado de venta libros.</p>
+<h2>PC - Mobile</h2>
+<div style="display:flex; flex-direction: row;">
+      <img src="https://github.com/user-attachments/assets/24521c1f-55b3-464d-a22c-b30d46725098">
+</div>
