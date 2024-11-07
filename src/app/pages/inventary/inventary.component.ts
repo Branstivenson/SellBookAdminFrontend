@@ -6,6 +6,7 @@ import { IAction } from 'src/app/components/table/model/action';
 import { IBook } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 import { handleErrors } from '../helpers/handleerrors';
+import { MainServiceService } from 'src/app/services/main-service.service';
 
 @Component({
   selector: 'app-inventary',
@@ -34,6 +35,7 @@ export class InventaryComponent implements OnInit{
 
   constructor(
     private bookService:BookService,
+    private mainService:MainServiceService,
     private router:Router,
     private toastMessageService:ToastMessageService
   ){
@@ -84,13 +86,9 @@ export class InventaryComponent implements OnInit{
   }
   findAll(){
     this.startLoad();
-    this.bookService.findAll().subscribe(
+    this.mainService.get('book').subscribe(
       (data:any)=>{
-        if(data.response==null){
-          this.books=[];
-        }else{
-          this.books=this.mapBooksForTable(data.response);
-        }
+        this.books=this.mapBooksForTable(data.response)||[];
         this.booksFound=this.books;
         this.finishLoad();
       },(error)=>{

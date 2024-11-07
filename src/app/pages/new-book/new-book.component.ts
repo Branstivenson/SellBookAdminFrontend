@@ -7,6 +7,7 @@ import { ResponseHttp } from 'src/app/models/response-http';
 import { BookService } from 'src/app/services/book.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { handleErrors } from '../helpers/handleerrors';
+import { MainServiceService } from 'src/app/services/main-service.service';
 
 @Component({
   selector: 'app-new-book',
@@ -26,7 +27,8 @@ export class NewBookComponent implements OnInit{
     private bookService:BookService,
     private activatedRoute:ActivatedRoute,
     private router:Router,
-    private toastMessageService:ToastMessageService
+    private toastMessageService:ToastMessageService,
+    private mainService:MainServiceService
   ){
   }
 
@@ -106,7 +108,7 @@ export class NewBookComponent implements OnInit{
     )
   }
   getBook(){
-    this.bookService.findOneById(this.id).subscribe(
+    this.mainService.getById('book',this.id).subscribe(
       (data:any)=>{
         this.formBook.setValue(data.response);
         this.formBook.get('isxn')?.disable();
