@@ -19,15 +19,15 @@ export class InventaryComponent implements OnInit{
   books:any[]=[];
   booksFound:any[]=[];
   hiddenLoad:boolean=true;
-  hiddenTable:boolean=false;
+  loaddingTable:boolean=false;
   hiddenEmpty:boolean=true;
   checkedTituloAutor:boolean=true;
   checkedIsxn:boolean=false;
-  
+  search!:string;
 
   tableAction:IAction={
     icon:'../../../assets/settings.svg',
-    redirect:'/new-book'
+    redirect:'/update-book'
   }
   tableHeaders=[
     'Imagen', 'Isxn', 'Titulo', 'Autor', 'Editorial', 'Categoria', 'Publicación', 'Unidades', 'Costo'
@@ -41,10 +41,6 @@ export class InventaryComponent implements OnInit{
   ){
   }
 
-  searchForm= new FormGroup({
-    string: new FormControl('',[Validators.required])
-  })
-
   
   ngOnInit(): void {
     this.findAll();
@@ -53,59 +49,43 @@ export class InventaryComponent implements OnInit{
   checkTituloAutor(){
     this.checkedTituloAutor=true;
     this.checkedIsxn=false;
-    if(this.searchForm.value.string){
-      this.search(this.searchForm.value.string)
+    if(this.search){
+      this.onSearch(this.search)
     }
    }
    checkIsxn(){
     this.checkedTituloAutor=false;
     this.checkedIsxn=true;
-    if(this.searchForm.value.string){
-      this.search(this.searchForm.value.string)
+    if(this.search){
+      this.onSearch(this.search)
     }
    }
-  finishLoad(){
-    if(this.booksFound.length>0){
-      this.hiddenEmpty=true;
-      this.hiddenTable=false;
-      this.hiddenLoad=true;
 
-    }else{
-      this.hiddenEmpty=false;
-      this.hiddenTable=true;
-      this.hiddenLoad=true;
-
-    }
-  }
-  startLoad(){
-      this.hiddenEmpty=true;
-      this.hiddenTable=true;
-      this.hiddenLoad=false;
-
-    
-  }
   findAll(){
-    this.startLoad();
+    this.loaddingTable=true;
     this.mainService.get('book').subscribe(
       (data:any)=>{
         this.books=this.mapBooksForTable(data.response)||[];
         this.booksFound=this.books;
-        this.finishLoad();
+        this.loaddingTable=false;
       },(error)=>{
-        handleErrors(error, this.toastMessageService)
+        handleErrors(error, this.toastMessageService);
+        this.loaddingTable=false;
+
       }
     )
   }
 
-  async search(string:any){
-    this.startLoad();
-    if(this.checkedTituloAutor==true&&this.searchForm.valid){
+  async onSearch(string:any){
+    this.loaddingTable=true;
+    this.search=string;
+    if(this.checkedTituloAutor==true&&string){
       await this.findByAuthorYTitle(string);
-    }else if(this.checkedIsxn==true&&this.searchForm.valid){
+    }else if(this.checkedIsxn==true&&string){
       await this.findByIsxn(string);
     }else{
       this.booksFound=this.books;
-      this.finishLoad();
+      this.loaddingTable=false;
     }
   }
 
@@ -117,7 +97,7 @@ export class InventaryComponent implements OnInit{
         this.booksFound.push(book);
       }
     });
-    this.finishLoad();
+    this.loaddingTable=false;
   }
   
   findByAuthorYTitle(string:any){
@@ -128,7 +108,7 @@ export class InventaryComponent implements OnInit{
         this.booksFound.push(book);
       }
     });
-    this.finishLoad();
+    this.loaddingTable=false;
   }
   getBook(id:number){
     this.router.navigate(['/new-book'],{queryParams:{id:id}})

@@ -1,0 +1,8 @@
+<form [formGroup]="searchForm" (submit)="onSubmit()">
+    <div class="search-bar mb-1">
+        <input brInputSearchBar type="text" formControlName="string" placeholder="Encuentra libros por titulo o autor" (input)="onSubmit()">
+        <button type="submit" brButtonSearchBar>
+            <img src="../../../assets/search.svg" alt="">
+        </button>
+    </div>
+</form>

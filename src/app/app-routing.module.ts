@@ -13,6 +13,10 @@ const routes: Routes = [
     component:NewBookComponent,
     path:'new-book',
     pathMatch:'full'
+  },{
+    component:NewBookComponent,
+    path:'update-book',
+    pathMatch:'full'
   }
 ];
 

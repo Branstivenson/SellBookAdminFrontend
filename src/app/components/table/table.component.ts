@@ -13,10 +13,29 @@ export class TableComponent {
   @Input() items!:any[];
   @Input() headers!:any[];
   @Input() action!:IAction;
-
+  @Input() loading!:boolean;
+  isEmpty!:boolean;
   constructor(
     private router:Router
   ){}
+
+  finishLoad(){
+    if(this.items.length>0){
+      this.isEmpty=false;
+      this.loading=true;
+
+    }else{
+      this.isEmpty=true;
+      this.loading=true;
+
+    }
+  }
+  startLoad(){
+      this.isEmpty=false;
+      this.loading=false;
+
+    
+  }
 
   getItem(id:number){
     this.router.navigate([this.action.redirect],{queryParams:{id:id}})

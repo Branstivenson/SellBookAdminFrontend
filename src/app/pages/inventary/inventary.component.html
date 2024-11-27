@@ -1,14 +1,9 @@
 <h2 class="txt-cyan txt-tab mb-3">INVENTARIO DE LIBROS</h2>
 <p class="txt-cyan">Asegurate de poner tildes para buscar, mayusculas no son necesarias.</p>
 <p class="txt-cyan txt-bold">Cantidad de libros encontrados: {{booksFound.length}}</p>
-<form [formGroup]="searchForm" (submit)="search(searchForm.value.string)">
-    <div class="search-bar mb-1">
-        <input brInputSearchBar type="text" formControlName="string" placeholder="Encuentra libros por titulo o autor" (input)="search(this.searchForm.value.string)">
-        <button type="submit" brButtonSearchBar>
-            <img src="../../../assets/search.svg" alt="">
-        </button>
-    </div>
-</form>
+
+<br-search-bar (search)="onSearch($event)"></br-search-bar>
+
 <div class="mb-3">
     <div class="row" (click)="checkTituloAutor()">
         <input type="radio" [checked]="checkedTituloAutor">
@@ -19,24 +14,12 @@
     <p class="txt-cyan txt-bold ms-1">ISXN</p>
     </div>
 </div>
-<div class="empty" [hidden]="hiddenEmpty">
-    <div class="center">
-        <img class="empty-icon" src="../../../assets/library.svg" alt="">
-    </div>
-    <div class="center">
-        <h2 class="txt-cyan">No hay libros encontrados.</h2>
-    </div>
-</div>
-<div [hidden]="hiddenTable">
+
     <br-table
     [items]="booksFound"
     [action]="tableAction"
     [headers]="tableHeaders"
+    [loading]="loaddingTable"
     />
-</div>
-<div [hidden]="hiddenLoad">
-    <div class="center">
-        <img src="../../../assets/load.svg" class="load mb-3 row" alt="" [hidden]="hiddenLoad">
-    </div>
-</div>
+
 

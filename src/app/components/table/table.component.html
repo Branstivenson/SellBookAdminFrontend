@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="items.length>0 && !loading">
     <thead>
         <tr>
             <th>#</th>
@@ -37,3 +37,18 @@
     </tbody>
 </table>
 
+
+<div [hidden]="!loading">
+    <div class="center">
+        <img src="../../../assets/load.svg" class="load mb-3 row" alt="" [hidden]="loading">
+    </div>
+</div>
+
+<div class="empty" *ngIf="items.length<=0 && !loading">
+    <div class="center">
+        <img class="empty-icon" src="../../../assets/library.svg" alt="">
+    </div>
+    <div class="center">
+        <h2 class="txt-cyan">No hay información para mostrar.</h2>
+    </div>
+</div>

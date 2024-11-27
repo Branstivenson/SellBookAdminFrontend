@@ -4,6 +4,6 @@
             <h2 class="txt-cyan">SELLBOOK - ADMINISTRACIÓN VENTA DE LIBROS</h2>
         </div>
         <div class="row nav">
-            <a *ngFor="let header of headers" class="column" href="{{header.url}}">{{header.name}}</a>
+            <a *ngFor="let header of headers" class="column" (click)="goTo(header.url)">{{header.name}}</a>
         </div>    
 </div>
