@@ -8,6 +8,7 @@ import { BookService } from 'src/app/services/book.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { handleErrors } from '../helpers/handleerrors';
 import { MainServiceService } from 'src/app/services/main-service.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-new-book',
@@ -23,12 +24,11 @@ export class NewBookComponent implements OnInit{
   categoryList:ICategory[]=[];
 
 
-  constructor(private categoryService:CategoryService,
+  constructor(private mainService:MainService,
     private bookService:BookService,
     private activatedRoute:ActivatedRoute,
     private router:Router,
     private toastMessageService:ToastMessageService,
-    private mainService:MainServiceService
   ){
   }
 
@@ -99,7 +99,7 @@ export class NewBookComponent implements OnInit{
   }
 
   allCategories(){
-    this.categoryService.findAll().subscribe(
+    this.mainService.getData('category').subscribe(
       (data:any)=>{
         this.categoryList=data;
       },(error)=>{
@@ -108,7 +108,7 @@ export class NewBookComponent implements OnInit{
     )
   }
   getBook(){
-    this.mainService.getById('book',this.id).subscribe(
+    this.mainService.getData('book/'+this.id).subscribe(
       (data:any)=>{
         this.formBook.setValue(data.response);
         this.formBook.get('isxn')?.disable();
@@ -119,7 +119,7 @@ export class NewBookComponent implements OnInit{
   }
 
   update(){
-      this.bookService.update(this.id,this.formBook.value).subscribe(
+      this.mainService.patchData( 'book/', this.id,this.formBook.value).subscribe(
         (data:any)=>{
           if(data.status=='NOT_MODIFIED'){
             this.toastMessageService.showMessage(
