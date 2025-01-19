@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { ToastMessageService } from './service/toast-message.service';
+import { ToastService } from './service/toast.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,21 +10,17 @@ import { Observable } from 'rxjs';
 export class MessageComponent{
 
   constructor(
-    private toastMessageService:ToastMessageService
+    private toastService:ToastService
   ){
-    toastMessageService.consoles.subscribe(
-      (consoles:any[])=>{
-        this.consoles=consoles;
-      }
-    );
+    
 
   }
 
-  consoles:any[]=[]
+  consoles$:Observable<any>=this.toastService.consoles;
   
 
-  hideConsole(console:any){
-    this.consoles.forEach((consol)=>{if(consol.id==console.id){this.consoles.pop()}});
-    
+  hideConsole(message:any){
+    this.toastService.closeMessage(message)
+
   }
 }

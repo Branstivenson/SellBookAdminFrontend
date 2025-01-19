@@ -1,16 +1,18 @@
 <div class="console">
-    <div  *ngFor="let console of consoles" class="console-{{console.message.severity}}" [hidden]="console.hidden">
-        <div class="console-body">
-            <div class="console-items">
-                <img class="info-{{console.message.severity}}" src="../../../assets/info.svg" alt="">
+    <div  *ngFor="let message of consoles$ | async " class="message message-{{message.message.severity}}" [hidden]="message.hidden">
+        <div class="body">
+            <div class="message-column">
+                <p class="summary message-txt-{{message.message.severity}}">{{message.message.component||message.message.severity|titlecase}}</p>
+                <p class="detail message-txt-{{message.message.severity}}">{{message.message.message}}</p>
             </div>
-            <div class="console-column">
-                <p class="message-{{console.message.severity}}">{{console.message.message}}</p>
+            <div class="message-insignias">
+                <img class="message-insignias-{{message.message.severity}}" src="../../../assets/info.svg" alt="">
             </div>
-            <div class="console-items">
-                <img class="close-{{console.message.severity}}" (click)="hideConsole(console)" [hidden]="!console.message.closeable"
-                    src="../../../assets/close.svg" alt="">
-            </div>
+
+        </div>
+        <div class="message-close">
+            <img class="message-close-{{message.message.severity}}" (click)="hideConsole(message)" [hidden]="!message.message.closeable"
+                src="../../../assets/close.svg" alt="">
         </div>
     </div>
 </div>

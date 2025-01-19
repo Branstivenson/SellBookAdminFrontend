@@ -1,0 +1,11 @@
+<div *ngIf="visible==true">
+    <div class="backdrop" (click)="onhide()"></div>
+    <div class="dialog">
+        <div class="content">
+            <button class="close-button" brButton (click)="onhide()">
+                <img src="../../../assets/moreToRigth.svg" alt="">
+            </button>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

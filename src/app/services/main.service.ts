@@ -22,6 +22,17 @@ export class MainService {
       })
     )
   }
+  getDataAuth(uri:string, params?:any):Observable<any>{
+    const token=String(sessionStorage.getItem('token'))
+    const headers = new HttpHeaders({
+      'Authorization':`Bearer ${token}`
+    })
+    return this.httpClient.get(`${environment.url}${uri}`, {headers}).pipe(
+      catchError((error:any)=>{
+        return throwError(()=> new Error(error.message))
+      })
+    )
+  }
   postData(uri:string,body:any):Observable<any>{
     let headers!:any;
 

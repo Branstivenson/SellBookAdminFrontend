@@ -43,8 +43,7 @@ export class DropdownDirective {
 
   private defaultDropdownStyle() {
     this.renderer.setStyle(this.element.nativeElement, 'border-radius', '20px');
-    this.renderer.setStyle(this.element.nativeElement, 'width', '100%');
-    this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
+    this.renderer.setStyle(this.element.nativeElement, 'min-width', '340px');
     this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'font-size', '15px');
     this.renderer.setStyle(this.element.nativeElement, 'padding', '0px 20px');
@@ -55,18 +54,17 @@ export class DropdownDirective {
 
   private disabledDropdown() {
     this.renderer.setProperty(this.element.nativeElement,'disabled', 'isDisabled');
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#e1ebea');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #179D8D 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#20312f');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #1aaf9d 3px');
   }
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #179D8D 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-txt-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'none');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #179D8D 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid var(--main-txt-color) 3px');
   }
 }

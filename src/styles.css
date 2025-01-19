@@ -18,6 +18,39 @@
 }.txt-small{
     font-size: small;
 }
+
+:root {
+    --main-color:#D9D6CE;
+    --main-color-disabled:#c0beb9;
+    --main-txt-color: #211F1F;
+    --main-bg-color: #9A948D;
+    --main-bg-color-hover:#8C877D;
+    --main-bg-txt-color: #F1F2ED;
+    --card-bg-color: #E3DED2;
+    --secondary-txt-color:#D4CDC2;
+    --secondary-bg-color: #9C9288;
+    --secondary-bg-color-hover: #80756b;
+    --secondary-color: #b7fff7;
+
+    --main-warning-color: #c8af0c;
+    --main-warning-bg-color:#fffbe4;
+    --main-warning-txt-color:#c8af0c;
+    --main-warning-color-hover:#ac9710;
+
+    --main-error-color: #c52b2e;
+    --main-error-bg-color:#fee8e8;
+    --main-error-txt-color:#c52b2e;
+    --main-error-color-hover: #a22123;
+
+    
+    --main-info-color: #3570d0;
+    --main-info-bg-color:#e7f0ff;
+    --main-info-txt-color:#3570d0;
+    --main-info-color-hover:#2b5aa7;
+  }
+  body{
+    background-color: var(--main-color);
+  }
 /* .alert{
     border-radius: 20px;
     padding: 20px 40px;

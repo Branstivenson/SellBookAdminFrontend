@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
 import { ICategory } from 'src/app/models/category';
 import { ResponseHttp } from 'src/app/models/response-http';
-import { BookService } from 'src/app/services/book.service';
-import { CategoryService } from 'src/app/services/category.service';
 import { handleErrors } from '../helpers/handleerrors';
-import { MainServiceService } from 'src/app/services/main-service.service';
 import { MainService } from 'src/app/services/main.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
 
 @Component({
   selector: 'app-new-book',
@@ -24,11 +21,11 @@ export class NewBookComponent implements OnInit{
   categoryList:ICategory[]=[];
 
 
-  constructor(private mainService:MainService,
-    private bookService:BookService,
+  constructor(
+    private mainService:MainService,
     private activatedRoute:ActivatedRoute,
     private router:Router,
-    private toastMessageService:ToastMessageService,
+    private toastService:ToastService,
   ){
   }
 
@@ -61,7 +58,7 @@ export class NewBookComponent implements OnInit{
   }
 
   insertBook(){
-      this.bookService.create(this.formBook.value).subscribe(
+      this.mainService.postData('book',this.formBook.value).subscribe(
         (data:any)=>{
           this.formBook.reset();
           this.formBook.patchValue({
@@ -70,12 +67,13 @@ export class NewBookComponent implements OnInit{
             },
           });
           this.imagePreview="../../../assets/noimage.png"
-          this.toastMessageService.showMessage(
+          this.toastService.showMessage(
             'success',
+            'Book',
             data.response
           );
         },(error)=>{
-          handleErrors(error,this.toastMessageService);
+          handleErrors(error,this.toastService);
         }
       )
     
@@ -92,8 +90,9 @@ export class NewBookComponent implements OnInit{
   }
   onErrorImage(){
     this.imagePreview="../../../assets/noimage.png";
-    this.toastMessageService.showMessage(
+    this.toastService.showMessage(
       'danger',
+      'Book',
       'Imagen de la url invalida.'
     )
   }
@@ -114,7 +113,7 @@ export class NewBookComponent implements OnInit{
         this.formBook.get('isxn')?.disable();
         this.imagePreview=data.response.image;
       },(error)=>{
-        handleErrors(error, this.toastMessageService)
+        handleErrors(error, this.toastService)
       });
   }
 
@@ -122,32 +121,35 @@ export class NewBookComponent implements OnInit{
       this.mainService.patchData( 'book/', this.id,this.formBook.value).subscribe(
         (data:any)=>{
           if(data.status=='NOT_MODIFIED'){
-            this.toastMessageService.showMessage(
+            this.toastService.showMessage(
               'warning',
+              'Book',
               data.response
             )
           }else{
-            this.toastMessageService.showMessage(
+            this.toastService.showMessage(
               'success',
+              'Book',
               data.response
             )
             this.router.navigateByUrl('/inventary');
           }
         },(error)=>{
-          handleErrors(error, this.toastMessageService);
+          handleErrors(error, this.toastService);
         }
        )
   }
-  delete(isxnBook:any){
-    this.bookService.delete(isxnBook).subscribe(
+  delete(id:any){
+    this.mainService.deleteData( 'book',id).subscribe(
       (data:any)=>{
-        this.toastMessageService.showMessage(
+        this.toastService.showMessage(
           'success',
+          'Book',
           data.response
         )
         this.router.navigateByUrl('/inventary')
       },(error)=>{
-        handleErrors(error, this.toastMessageService);
+        handleErrors(error, this.toastService);
       }
 
     );
@@ -157,8 +159,9 @@ export class NewBookComponent implements OnInit{
 
   onSubmit(){
     if(this.formBook.invalid&&this.formBook.value.category?.id=='0'){
-      return this.toastMessageService.showMessage(
+      return this.toastService.showMessage(
         'danger',
+        'Book',
         'Asegurate de llenar todos los campos correctamente'
       )
     }

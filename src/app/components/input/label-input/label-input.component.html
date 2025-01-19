@@ -1,0 +1,10 @@
+<div class="column">
+    <div class="row">
+        <label for="" *ngIf="noRequired==false">*</label>
+        <label for="input">{{label}}:</label>
+    </div>
+    <div class="row gap-1">
+        <ng-content></ng-content>
+        <br-save-input></br-save-input>
+    </div>    
+</div>

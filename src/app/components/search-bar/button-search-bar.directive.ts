@@ -36,7 +36,6 @@ export class ButtonSearchBarDirective {
     this.renderer.setStyle(this.element.nativeElement, 'gap', '5px');
     this.renderer.setStyle(this.element.nativeElement, 'align-items', 'center');
     this.renderer.setStyle(this.element.nativeElement, 'border-radius', '0px 20px 20px 0px');
-    this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'padding', '10px 15px');
     this.renderer.setStyle(this.element.nativeElement, 'font-weight', '500');
@@ -45,13 +44,12 @@ export class ButtonSearchBarDirective {
   }
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#179D8D');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-bg-txt-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--main-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#14887a');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#179D8D');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-bg-color-hover)');
   }
 
 

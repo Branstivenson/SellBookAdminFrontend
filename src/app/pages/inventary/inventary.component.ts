@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
 import { IAction } from 'src/app/components/table/model/action';
 import { IBook } from 'src/app/models/book';
-import { BookService } from 'src/app/services/book.service';
 import { handleErrors } from '../helpers/handleerrors';
-import { MainServiceService } from 'src/app/services/main-service.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-inventary',
@@ -27,17 +26,16 @@ export class InventaryComponent implements OnInit{
 
   tableAction:IAction={
     icon:'../../../assets/settings.svg',
-    redirect:'/new-book'
+    severity:'primary'
   }
   tableHeaders=[
-    'Imagen', 'Isxn', 'Titulo', 'Autor', 'Editorial', 'Categoria', 'Publicación', 'Unidades', 'Costo'
+    'image', 'isxn', 'title', 'author', 'editorial', 'category', 'publicationDate', 'units', 'cost'
   ]
 
   constructor(
-    private bookService:BookService,
-    private mainService:MainServiceService,
+    private mainService:MainService,
     private router:Router,
-    private toastMessageService:ToastMessageService
+    private toastService:ToastService
   ){
   }
 
@@ -86,13 +84,14 @@ export class InventaryComponent implements OnInit{
   }
   findAll(){
     this.startLoad();
-    this.mainService.get('book').subscribe(
+    this.mainService.getData('book?limit=10&offset=0').subscribe(
       (data:any)=>{
-        this.books=this.mapBooksForTable(data.response)||[];
+        this.books=this.mapBooksForTable(data.detail)||[];
         this.booksFound=this.books;
+        console.log(this.booksFound)
         this.finishLoad();
       },(error)=>{
-        handleErrors(error, this.toastMessageService)
+        handleErrors(error, this.toastService)
       }
     )
   }
@@ -134,16 +133,16 @@ export class InventaryComponent implements OnInit{
     this.router.navigate(['/new-book'],{queryParams:{id:id}})
   }
   mapBooksForTable(bookList:any){
-    return bookList.map((book:IBook)=>({
-      Imagen:String(book.image),
-      Isxn:String(book.isxn),
-      Titulo:String(book.title),
-      Autor:String(book.author),
-      Editorial:String(book.editorial),
-      Categoria:String(book.category.name),
-      Publicación:String(book.publicationDate),
-      Unidades:String(book.units),
-      Costo:String(book.cost)+' COP'
+    return bookList.map((book:any)=>({
+      image:String(book.image),
+      isxn:String(book.isxn),
+      title:String(book.title),
+      author:String(book.author),
+      editorial:String(book.editorial),
+      category:String(book.category.name),
+      publicationDate:String(book.publicationDate),
+      units:String(book.units),
+      cost:String(book.cost)+' COP'
     }));
   }
 }

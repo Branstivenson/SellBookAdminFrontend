@@ -1,0 +1,6 @@
+<div *ngIf="visible==true">
+    <div class="backdrop" (click)="onhide()"></div>
+    <div class="dialog">
+        <ng-content></ng-content>
+    </div>
+</div>

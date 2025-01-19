@@ -1,0 +1,23 @@
+<div class="{{scrollClass}}">
+    <div class="card" *ngFor="let item of items">
+        <div class="row">
+
+            <img class="card-img" (error)="item.image=noImage" (click)="goSearchingById(item.id)"
+                src={{item.image}} alt="...">
+
+            <div class="card-body">
+                <h5 class="card-title">{{item.title||item.name}}</h5>
+
+                <p class="card-text txt-bold">${{item.cost|number:'4.2-2'}} COP</p>
+                <P class="card-text">{{item.author||item.brand}}</P>
+            </div>
+        </div>
+
+        <div class="card-center ">
+            <button type="button" brButton (click)="addToCart(item)">
+                <img class="me-1" src="../../../assets/shop.svg" alt="">
+                Añadir al carrito
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+    <div class="card {{scrollClass}}">
+        <div class="card-body" *ngFor="let item of items">
+                <div class="row space-btw">
+                    <div id="img" class="column">
+                        <img class="card-img"  src={{item.item.image}} alt="...">
+                    </div>
+                    <div id="info" class="column">
+                        <h5 class="card-title">Codigo: {{item.item.id}}</h5>
+                        <h5 class="card-title">{{item.item.title}}</h5>
+                        <P class="card-text"> Autor: Eva Muñoz</P>
+                    </div>
+                    <div id="units" class="column">
+                        <h5 class="card-title txt-bold">${{item.item.cost|number:item.item.cost.toString().length+'.2-2'}} COP</h5>
+                        <h5 class="card-title txt-bold">cantidad:</h5>
+                        <div class="row">
+                            <button brButton>
+                                <img src="../../../assets/less.svg" alt="">
+                              </button>
+                              <h5 class="card-title">{{item.item.units}}</h5>
+                              <button brButton >
+                                <img src="../../../assets/more.svg" alt="">
+                              </button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="card-body" *ngIf="items.length==0">
+                <h2>No se encontraron articulos.</h2>
+        </div>
+    </div>
+
+<div class="card-cost">
+    <div class="cost">
+        <h2>Costo Total: ${{totalCost$|async|number:totalCostLength.length+'.2-2'}}</h2>
+    </div>
+</div>  

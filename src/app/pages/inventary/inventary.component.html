@@ -9,16 +9,6 @@
         </button>
     </div>
 </form>
-<div class="mb-3">
-    <div class="row" (click)="checkTituloAutor()">
-        <input type="radio" [checked]="checkedTituloAutor">
-        <p class="txt-cyan txt-bold ms-1">Titulo/Autor</p>
-    </div>
-    <div class="row" (click)="checkIsxn()">
-        <input type="radio"  [checked]="checkedIsxn">
-    <p class="txt-cyan txt-bold ms-1">ISXN</p>
-    </div>
-</div>
 <div class="empty" [hidden]="hiddenEmpty">
     <div class="center">
         <img class="empty-icon" src="../../../assets/library.svg" alt="">

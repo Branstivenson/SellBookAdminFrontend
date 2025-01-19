@@ -1,5 +1,5 @@
 export interface IAction{
 
     icon:string;
-    redirect:string;
+    severity:string;
 }

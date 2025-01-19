@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsoleComponent } from './console.component';
+import { SaveInputComponent } from './save-input.component';
 
-describe('ConsoleComponent', () => {
-  let component: ConsoleComponent;
-  let fixture: ComponentFixture<ConsoleComponent>;
+describe('SaveInputComponent', () => {
+  let component: SaveInputComponent;
+  let fixture: ComponentFixture<SaveInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConsoleComponent ]
+      declarations: [ SaveInputComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ConsoleComponent);
+    fixture = TestBed.createComponent(SaveInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

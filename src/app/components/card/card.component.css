@@ -1,0 +1,28 @@
+.card{
+    border:none;
+    border-radius: 20px;
+    background-color: var(--card-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--main-bg-color) 0px 0px 6px 1px;
+}.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+
+}
+.card h5{
+    color: var(--main-txt-color);
+    text-transform: uppercase;
+
+}.card h3{
+    color: var(--main-txt-color);
+    text-transform: uppercase;
+
+}.card p{
+    color: var(--main-txt-color);
+    font-size: small;
+}

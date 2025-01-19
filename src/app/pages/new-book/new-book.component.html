@@ -65,7 +65,6 @@
                     </div>
                 </div>
         </div>
-        <br-console [message]="showInConsole.message" [severity]="showInConsole.status" [hidden]="hiddenConsole"/>
         <div class="row justify-center">
             <button type="submit" brButton>Guardar</button>
             <button type="button" brButton severity="danger" (click)="delete(formBook.value.isxn)" *ngIf="id">Eliminar</button>

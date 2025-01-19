@@ -14,14 +14,16 @@ import { ButtonSearchBarDirective } from './components/search-bar/button-search-
 import { InputSearchBarDirective } from './components/search-bar/input-search-bar.directive';
 import { InputDirective } from './components/input/input.directive';
 import { DropdownDirective } from './components/dropdown/dropdown.directive';
-import { ConsoleComponent } from './components/console/console.component';
 import { MessageComponent } from './components/message/message.component';
+import { SearchBarComponent } from './components/search-bar/search-bar/search-bar.component';
+import { IconDirective } from './components/icon/icon.directive';
+import { ToastService } from './components/message/service/toast.service';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewBookComponent,
-    InventaryComponent,
     NavbarComponent,
     ButtonDirective,
     TableComponent,
@@ -29,8 +31,15 @@ import { MessageComponent } from './components/message/message.component';
     InputSearchBarDirective,
     InputDirective,
     DropdownDirective,
-    ConsoleComponent,
-    MessageComponent
+    MessageComponent,
+    SearchBarComponent,
+    InputSearchBarDirective,
+    ButtonSearchBarDirective,
+    InputDirective,
+    IconDirective,
+    InventaryComponent,
+    MessageComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
